@@ -1,0 +1,19 @@
+.dark-theme {
+	--bkg-0: #000000;
+	--bkg-1: #042137;
+	--frg-0: #e6f4ff;
+	--frg-1: #80c8ff;
+	--red: #ff1414;
+	--yellow: #ffff14;
+	--orange: #ff8a14;
+	--green: #8aff14;
+	--blue: #1499ff;
+
+	--xx-small: 0.1rem;
+	--x-small: 0.25rem;
+	--small: 0.5rem;
+	--medium: 1rem;
+	--large: 2rem;
+	--x-large: 4rem;
+	--xx-large: 8rem;
+}

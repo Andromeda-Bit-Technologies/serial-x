@@ -1,0 +1,52 @@
+@import url("./styles/index.css");
+
+
+* {
+  /* box-sizing: border-box; */
+  font-family: "RobotoCondensed-Regular";
+  background: var(--bkg-0);
+  color: var(--frg-0);
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body {
+  font-family: "RobotoCondensed-Regular";
+  background: var(--bkg-0);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.roll-page {
+  background: var(--bkg-0);
+}
+
+.roll-page h1 {
+  text-align: center;
+}
+
+roll-container {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1 {
+  font-size: var(--xx-large);
+}
+
+
+@media screen and (max-width: 600px){}
+@media screen and (min-width: 1200px){}

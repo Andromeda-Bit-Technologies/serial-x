@@ -1,0 +1,29 @@
+/* sizes */
+.w-100 {
+	width: 100%;
+}
+
+.h-100 {
+	height: 100%;
+}
+
+/* colors */
+.is-blue {
+	color: var(--blue);
+}
+
+/* flex */
+.is-flex {
+	display: flex;
+}
+
+.is-centered-all {
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+/* util */
+.is-not-selectable {
+	user-select: none;
+}

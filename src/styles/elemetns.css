@@ -1,0 +1,8 @@
+.btn {
+	min-width: 100px;
+	min-height: 40px;
+	border: none;
+	outline: none;
+	background: var(--bkg-1);
+	font-size: var(--medium);
+}

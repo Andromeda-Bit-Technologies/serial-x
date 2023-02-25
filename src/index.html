@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-theme">
+
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serial-X</title>
+    <script type="module" src="./js/theme-switch.js" defer></script>
+    <script type="module" src="./js/page-roll.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <roll-container allow="up-down">
+        <roll-page class="is-flex is-centered-all">
+
+          <theme-switch themes="dark-theme light-theme" storage-key="serial-x">
+            <button onclick="this.parentNode.dispatch()" class="btn">Switch Theme</button>
+          </theme-switch>
+
+          <h1 class="is-not-selectable fade-in-slow">SERIAL <span class="is-blue">X</span></h1>
+        </roll-page>
+
+        <roll-page>
+          <h1>Hello 2</h1>
+        </roll-page>
+
+        <roll-page>
+          <h1>Page 3</h1>
+        </roll-page>
+
+      </roll-container>
+    </div>
+  </body>
+
+  <script type="module" src="./main.js" defer></script>
+
+</html>
