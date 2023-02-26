@@ -60,10 +60,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 768,
         "resizable": true,
-        "title": "Serial-X",
-        "width": 800
+        "title": "Serial X",
+        "width": 1024
       }
     ]
   }

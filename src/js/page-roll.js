@@ -91,7 +91,6 @@ class RollPageContainer extends HTMLElement{
 class RollPage extends HTMLElement {
 	constructor() {
 		super();
-		this.setAttribute('class', 'roll-page');
 		this.style.display = 'block';
 		this.style.width = '100vw';
 		this.style.height = '100vh';

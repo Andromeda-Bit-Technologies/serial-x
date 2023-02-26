@@ -7,7 +7,14 @@
 	}
 }
 
-.fade-in-slow {
-	animation: fade-in 4s ease-out;
-	transition: opacity;
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+		display: initial;
+	}
+
+	100% {
+		opacity: 0;
+		display: none;
+	}
 }

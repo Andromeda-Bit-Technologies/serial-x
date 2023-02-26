@@ -16,4 +16,6 @@
 	--large: 2rem;
 	--x-large: 4rem;
 	--xx-large: 8rem;
+
+	--bkg-image: url("/src/assets/graphics/bkg-dark.png");
 }

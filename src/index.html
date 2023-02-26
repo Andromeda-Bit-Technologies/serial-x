@@ -6,14 +6,24 @@
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Serial-X</title>
+    <script type="module" src="./js/anime.min.js" defer></script>
     <script type="module" src="./js/theme-switch.js" defer></script>
     <script type="module" src="./js/page-roll.js" defer></script>
+    <script type="module" src="./js/sidebar.js" defer></script>
   </head>
 
   <body>
     <div class="container">
+
       <roll-container allow="up-down">
-        <roll-page class="is-flex is-centered-all">
+
+        <x-sidebar open="true">
+          <p>Data</p>
+          <p>Saved Data</p>
+        </x-sidebar>
+        <x-sidebar-toggle>Settings</x-sidebar-toggle>
+
+        <roll-page class="is-flex is-centered-all bkg-img">
 
           <theme-switch themes="dark-theme light-theme" storage-key="serial-x">
             <button onclick="this.parentNode.dispatch()" class="btn">Switch Theme</button>
@@ -31,6 +41,7 @@
         </roll-page>
 
       </roll-container>
+      
     </div>
   </body>
 

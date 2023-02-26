@@ -3,8 +3,11 @@
 
 * {
   font-family: "RobotoCondensed-Regular";
+  box-sizing: border-box;
   background: var(--bkg-0);
   color: var(--frg-0);
+  padding: 0;
+  margin: 0;
 }
 
 html {
@@ -24,17 +27,57 @@ body {
   height: 100%;
 }
 
-.roll-page {
-  background: var(--bkg-0);
-}
-
-.roll-page h1 {
-  text-align: center;
+.bkg-img {
+  background: var(--bkg-image) center no-repeat;
+  background-size: cover;
 }
 
 roll-container {
   width: 100%;
   height: 100%;
+}
+
+roll-page {
+  background: var(--bkg-0);
+}
+
+roll-page h1 {
+  text-align: center;
+}
+
+x-sidebar {
+  position: absolute;
+  padding-left: var(--medium);
+  top: 25vh;
+  left: 1vw;
+  width: 20vw;
+  background: var(--bkg-1);
+  line-height: var(--large);
+  user-select: none;
+}
+x-sidebar[open="false"] {
+  animation: "fade-out" 0.05s ease-in forwards;
+}
+x-sidebar[open="true"] {
+  animation: "fade-in" 0.1s ease-out forwards;
+}
+
+x-sidebar-toggle {
+  position: absolute;
+  top: 25vh;
+  left: 21vw;
+  width: 10vw;
+  background: var(--bkg-1);
+  color: var(--frg-1);
+  line-height: var(--large);
+  text-align: center;
+  user-select: none;
+}
+x-sidebar-toggle.active {
+  left: -2vh;
+  transform: rotate(-90deg);
+  content: none;
+  /* background: url("../src/assets/graphics/icons/settings.svg") no-repeat center; */
 }
 
 body::-webkit-scrollbar {
