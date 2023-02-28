@@ -17,7 +17,6 @@ html {
 
 body {
   font-family: "RobotoCondensed-Regular";
-  background: var(--bkg-image);
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -53,7 +52,8 @@ roll-container {
 }
 
 roll-page {
-  background: var(--bkg-image);
+  background: var(--bkg-0);
+  /* background: var(--bkg-image); */
 }
 
 roll-page h1 {
@@ -84,7 +84,9 @@ x-sidebar button:hover {
   color: var(--frg-1);
   box-shadow: 0 0 6px -3px var(--frg-1) inset;
 }
-/* x-sidebar button:active {} */
+x-sidebar button:active {
+  box-shadow: 0 0 6px -3px var(--blue) inset;
+}
 x-sidebar[closed="false"] {
   animation: "fade-out" 0.05s ease-in forwards;
 }
@@ -118,5 +120,13 @@ x-toggle[closed="true"] p {
 }
 
 
-@media screen and (max-width: 600px){}
+@media screen and (max-width: 600px){
+  h1 {
+    font-size: var(--small);
+  }
+
+  .header-title {
+    font-size: var(--x-large);
+  }
+}
 @media screen and (min-width: 1200px){}

@@ -19,8 +19,16 @@ class ThemeSwitch extends HTMLElement {
 		this.dispatchEvent(this.changeThemeEvent);
 	}
 
+	currentTheme() {
+		return document.querySelector(':root').className;
+	}
+
+	asTextContent() {
+		return `${document.querySelector(':root').className.replace('-', ' ').replace('theme', '')}`;
+	}
+
 	switch(by) {
-		let themeName = document.querySelector(':root').className;
+		let themeName = this.currentTheme();
 		let index = this.themes.indexOf(themeName) || 0;
 		let length = this.themes.length;
 

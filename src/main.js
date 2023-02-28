@@ -22,10 +22,10 @@
 	container.appendChild(rollPage);
 
 	window.addEventListener('DOMContentLoaded', function() {
-		let menuButtons = document.getElementsByClassName('menu-btn');
-		let interfaceClick = document.getElementById('menu-button-click-sound');
+		let buttonsWithSound = document.getElementsByClassName('sound-interface-click');
+		let interfaceClick = document.getElementById('sound-interface-click');
 
-		Array.from(menuButtons).map(element => {
+		Array.from(buttonsWithSound).map(element => {
 			element.addEventListener('click', () => {
 				if (interfaceClick.ended) {
 					interfaceClick.play();
