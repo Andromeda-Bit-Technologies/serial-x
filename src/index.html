@@ -6,41 +6,39 @@
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Serial X</title>
-    <script type="module" src="./js/page-roll.js"></script>
-    <script type="module" src="./js/theme-switch.js"></script>
   </head>
 
   <body>
-    <audio id="menu-button-click-sound">
+    <audio id="sound-interface-click">
       <source src="./assets/sounds/interface-click.mp3">
     </audio>
     <div class="container">
 
       <roll-container allow="up-down" id="roll-container">
 
-        <roll-page class="x">
+        <roll-page>
 
-          <x-toggle target="sidebar-left" closed="false">
+          <x-toggle target="sidebar-left" closed="false" class="sound-interface-click">
             <p>Settings</p>
           </x-toggle>
 
           <x-sidebar id="sidebar-left" closed="true">
-            <button class="btn menu-btn">
+            <button class="btn menu-btn sound-interface-click">
               Menu item 1
             </button>
-            <button class="btn menu-btn">
+            <button class="btn menu-btn sound-interface-click">
               Menu item 2
             </button>
-            <button class="btn menu-btn">
+            <button class="btn menu-btn sound-interface-click">
               Menu item 3
             </button>
-            <button class="btn menu-btn">
+            <button class="btn menu-btn sound-interface-click">
               Menu item 4
             </button>
             <theme-switch themes="dark-theme light-theme" storage-key="serial-x">
               <button 
-                onclick="this.parentNode.dispatch()"
-                class="btn menu-btn">
+                onclick="[this.parentNode.dispatch(), this.textContent = this.parentNode.asTextContent()]"
+                class="btn menu-btn sound-interface-click">
                 Switch Theme
               </button>
             </theme-switch>
@@ -64,10 +62,10 @@
 
   </body>
 
-  <script type="module" src="./js/sound.js" defer></script>
+  <script type="module" src="./js/page-roll.js"></script>
+  <script type="module" src="./js/theme-switch.js"></script>
   <script type="module" src="./js/sidebar.js"></script>
   <script type="module" src="./js/toggle.js"></script>
   <script type="module" src="./main.js"></script>
-
 
 </html>
