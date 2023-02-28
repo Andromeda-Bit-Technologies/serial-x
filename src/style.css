@@ -4,8 +4,8 @@
 * {
   font-family: "RobotoCondensed-Regular";
   box-sizing: border-box;
-  background: var(--bkg-0);
   color: var(--frg-0);
+  stroke: var(--frg-0);
   padding: 0;
   margin: 0;
 }
@@ -17,9 +17,16 @@ html {
 
 body {
   font-family: "RobotoCondensed-Regular";
-  background: var(--bkg-0);
+  background: var(--bkg-image);
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1 {
+  font-size: var(--x-large);
 }
 
 .container {
@@ -27,9 +34,17 @@ body {
   height: 100%;
 }
 
+.header-title {
+  font-size: var(--xx-large);
+}
+
 .bkg-img {
   background: var(--bkg-image) center no-repeat;
   background-size: cover;
+}
+
+.color-phase--blue {
+  animation: color-phase 2s ease-in-out infinite alternate;
 }
 
 roll-container {
@@ -38,7 +53,7 @@ roll-container {
 }
 
 roll-page {
-  background: var(--bkg-0);
+  background: var(--bkg-image);
 }
 
 roll-page h1 {
@@ -47,45 +62,59 @@ roll-page h1 {
 
 x-sidebar {
   position: absolute;
-  padding-left: var(--medium);
-  top: 25vh;
+  top: 15vh;
   left: 1vw;
-  width: 20vw;
-  background: var(--bkg-1);
-  line-height: var(--large);
+  width: 14vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: var(--medium);
   user-select: none;
 }
-x-sidebar[open="false"] {
+x-sidebar button {
+  width: 14vw;
+  padding: var(--small) var(--x-small);
+  background: var(--bkg-0);
+  box-shadow: 0 0 6px -3px var(--frg-0) inset;
+  margin: var(--x-small);
+}
+x-sidebar button:hover {
+  color: var(--frg-1);
+  box-shadow: 0 0 6px -3px var(--frg-1) inset;
+}
+/* x-sidebar button:active {} */
+x-sidebar[closed="false"] {
   animation: "fade-out" 0.05s ease-in forwards;
 }
-x-sidebar[open="true"] {
+x-sidebar[closed="true"] {
   animation: "fade-in" 0.1s ease-out forwards;
 }
 
-x-sidebar-toggle {
+x-toggle {
   position: absolute;
-  top: 25vh;
-  left: 21vw;
-  width: 10vw;
-  background: var(--bkg-1);
+  top: 5vh;
+  left: 1vw;
+  background: var(--bkg-0);
   color: var(--frg-1);
-  line-height: var(--large);
   text-align: center;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-x-sidebar-toggle.active {
-  left: -2vh;
-  transform: rotate(-90deg);
-  content: none;
-  /* background: url("../src/assets/graphics/icons/settings.svg") no-repeat center; */
+x-toggle  p {
+  padding: var(--small);
 }
+x-toggle[closed="false"] p {
+  color: var(--frg-0);
+  box-shadow: 0 0 4px -2px var(--frg-0) inset;
+}
+x-toggle[closed="true"] p {
+  color: var(--frg-1);
+  box-shadow: 0 0 4px -2px var(--frg-1) inset;
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
-h1 {
-  font-size: var(--xx-large);
 }
 
 

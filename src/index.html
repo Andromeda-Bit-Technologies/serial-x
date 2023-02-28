@@ -5,31 +5,49 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Serial-X</title>
-    <script type="module" src="./js/anime.min.js" defer></script>
-    <script type="module" src="./js/theme-switch.js" defer></script>
-    <script type="module" src="./js/page-roll.js" defer></script>
-    <script type="module" src="./js/sidebar.js" defer></script>
+    <title>Serial X</title>
+    <script type="module" src="./js/page-roll.js"></script>
+    <script type="module" src="./js/theme-switch.js"></script>
   </head>
 
   <body>
+    <audio id="menu-button-click-sound">
+      <source src="./assets/sounds/interface-click.mp3">
+    </audio>
     <div class="container">
 
-      <roll-container allow="up-down">
+      <roll-container allow="up-down" id="roll-container">
 
-        <x-sidebar open="true">
-          <p>Data</p>
-          <p>Saved Data</p>
-        </x-sidebar>
-        <x-sidebar-toggle>Settings</x-sidebar-toggle>
+        <roll-page class="x">
 
-        <roll-page class="is-flex is-centered-all bkg-img">
+          <x-toggle target="sidebar-left" closed="false">
+            <p>Settings</p>
+          </x-toggle>
 
-          <theme-switch themes="dark-theme light-theme" storage-key="serial-x">
-            <button onclick="this.parentNode.dispatch()" class="btn">Switch Theme</button>
-          </theme-switch>
+          <x-sidebar id="sidebar-left" closed="true">
+            <button class="btn menu-btn">
+              Menu item 1
+            </button>
+            <button class="btn menu-btn">
+              Menu item 2
+            </button>
+            <button class="btn menu-btn">
+              Menu item 3
+            </button>
+            <button class="btn menu-btn">
+              Menu item 4
+            </button>
+            <theme-switch themes="dark-theme light-theme" storage-key="serial-x">
+              <button 
+                onclick="this.parentNode.dispatch()"
+                class="btn menu-btn">
+                Switch Theme
+              </button>
+            </theme-switch>
 
-          <h1 class="is-not-selectable fade-in-slow">SERIAL <span class="is-blue">X</span></h1>
+          </x-sidebar>
+          
+          <h1 class="is-not-selectable header-title">SERIAL <span class="color-phase--blue is-blue">X</span></h1>
         </roll-page>
 
         <roll-page>
@@ -43,8 +61,13 @@
       </roll-container>
       
     </div>
+
   </body>
 
-  <script type="module" src="./main.js" defer></script>
+  <script type="module" src="./js/sound.js" defer></script>
+  <script type="module" src="./js/sidebar.js"></script>
+  <script type="module" src="./js/toggle.js"></script>
+  <script type="module" src="./main.js"></script>
+
 
 </html>

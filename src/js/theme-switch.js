@@ -1,28 +1,7 @@
 class ThemeSwitch extends HTMLElement {
-	/*
-		Custom elements based theme switcher
-
-		# How to
-
-			## Define theme in your CSS:
-			.theme-blue-yellow {
-				--primary-color: #33cccc;
-				--secondary-color: #cccc33;
-				--background-color: #051414;
-			}
-			
-			more themes here...
-
-			## Add this custom element to your HTML
-
-			<theme-switch themes="dark-theme light-theme" storage-key="your-key-name">
-				<!-- this could be checkbox or something else -->
-            	<button onclick="this.parentNode.dispatch()">Switch Theme</button>
-          	</theme-switch>
-	*/
 	constructor() {
 		super();
-		this.style.display = 'inline-block';
+		this.style.display = 'inline';
 		this.themes = this.getAttribute('themes').split(' ');
 		this.changeThemeEvent = new Event('theme-change');
 		let savedThemeName = localStorage.getItem(this.getAttribute('storage-key'));

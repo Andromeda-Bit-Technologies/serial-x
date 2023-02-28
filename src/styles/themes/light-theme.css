@@ -1,6 +1,8 @@
 .light-theme {
 	--bkg-0: #ffffff;
+	--bkg-0-tr: #ffffff44;
 	--bkg-1: #e6e6e6;
+	--bkg-1-tr: #e6e6e644;
 	--frg-0: #000000;
 	--frg-1: #222222;
 	--red: #c23d3d;

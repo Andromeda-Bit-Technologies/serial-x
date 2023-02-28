@@ -18,3 +18,12 @@
 		display: none;
 	}
 }
+
+@keyframes color-phase--blue {
+	0% {
+		text-shadow: 0 0 var(--small) var(--blue);
+	}
+	100% {
+		text-shadow: 0 0 var(--large) var(--blue);
+	}
+}

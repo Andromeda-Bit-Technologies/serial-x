@@ -15,3 +15,28 @@
 //     .querySelector("#greet-button")
 //     .addEventListener("click", () => greet());
 // });
+(function init() {
+	let container = document.getElementById('roll-container');
+	let rollPage = document.createElement('roll-page');
+	rollPage.innerHTML = '<h1>This is dynamic content</h1>';
+	container.appendChild(rollPage);
+
+	window.addEventListener('DOMContentLoaded', function() {
+		let menuButtons = document.getElementsByClassName('menu-btn');
+		let interfaceClick = document.getElementById('menu-button-click-sound');
+
+		Array.from(menuButtons).map(element => {
+			element.addEventListener('click', () => {
+				if (interfaceClick.ended) {
+					interfaceClick.play();
+					interfaceClick.volume = 0.15;
+				} else {
+					interfaceClick.load();
+					interfaceClick.play();
+					interfaceClick.volume = 0.15;
+
+				}
+			})
+		});
+	});
+})();
