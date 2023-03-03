@@ -1,10 +1,12 @@
 .light-theme {
 	--bkg-0: #ffffff;
-	--bkg-0-tr: #ffffff44;
+	--bkg-0-tr: #ffffff55;
 	--bkg-1: #e6e6e6;
-	--bkg-1-tr: #e6e6e644;
+	--bkg-1-tr: #e6e6e655;
 	--frg-0: #000000;
+	--frg-0-tr: #000000aa;
 	--frg-1: #222222;
+	--frg-1-tr: #22222255;
 	--red: #c23d3d;
 	--yellow: #c2c23d;
 	--orange: #c2803d;
@@ -18,6 +20,4 @@
 	--large: 2rem;
 	--x-large: 4rem;
 	--xx-large: 8rem;
-
-	--bkg-image: url("/src/assets/graphics/bkg-light.png");
 }

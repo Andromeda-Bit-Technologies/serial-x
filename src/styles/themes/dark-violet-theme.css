@@ -1,0 +1,23 @@
+.dark-violet-theme {
+	--bkg-0: #340933;
+	--bkg-0-tr: #34093355;
+	--bkg-1: #9A0794;
+	--bkg-1-tr: #9A079455;
+	--frg-0: #D4F7D4;
+	--frg-0-tr: #D4F7D455;
+	--frg-1: #FBA90A;
+	--frg-1-tr: #FBA90A55;
+	--red: #fb0909;
+	--yellow: #fbfb09;
+	--orange: #fb8209;
+	--green: #09fb09;
+	--blue: #09bffb;
+
+	--xx-small: 0.1rem;
+	--x-small: 0.25rem;
+	--small: 0.5rem;
+	--medium: 1rem;
+	--large: 2rem;
+	--x-large: 4rem;
+	--xx-large: 8rem;
+}

@@ -8,6 +8,7 @@
   stroke: var(--frg-0);
   padding: 0;
   margin: 0;
+  user-select: none;
 }
 
 html {
@@ -28,13 +29,46 @@ h1 {
   font-size: var(--x-large);
 }
 
+h1, h2, h3, h4 {
+  font-weight: normal;
+}
+
+button {
+  width: 10vw;
+  padding: var(--small) var(--x-small);
+  background: var(--bkg-0);
+  outline: 1px solid var(--frg-1-tr);
+  margin: var(--x-small);
+}
+
+button:hover {
+  color: var(--frg-1);
+  outline: 1px solid var(--frg-0-tr);
+}
+
+button:active {
+  background: var(--bkg-1-tr);
+}
+
+label {
+  color: var(--frg-0);
+}
+
 .container {
   width: 100%;
   height: 100%;
 }
 
 .header-title {
+  padding-top: 10vh;
   font-size: var(--xx-large);
+}
+
+.dark-theme .header-title {
+  animation: color-phase--blue 120s alternate infinite;
+}
+.light-theme .header-title {
+  animation: color-phase--black 120s alternate infinite;
 }
 
 .bkg-img {
@@ -53,14 +87,13 @@ roll-container {
 
 roll-page {
   background: var(--bkg-0);
-  /* background: var(--bkg-image); */
 }
 
 roll-page h1 {
   text-align: center;
 }
 
-x-sidebar {
+/* x-sidebar {
   position: absolute;
   top: 15vh;
   left: 1vw;
@@ -73,31 +106,17 @@ x-sidebar {
   padding: var(--medium);
   user-select: none;
 }
-x-sidebar button {
-  width: 14vw;
-  padding: var(--small) var(--x-small);
-  background: var(--bkg-0);
-  box-shadow: 0 0 6px -3px var(--frg-0) inset;
-  margin: var(--x-small);
-}
-x-sidebar button:hover {
-  color: var(--frg-1);
-  box-shadow: 0 0 6px -3px var(--frg-1) inset;
-}
-x-sidebar button:active {
-  box-shadow: 0 0 6px -3px var(--blue) inset;
-}
 x-sidebar[closed="false"] {
   animation: "fade-out" 0.05s ease-in forwards;
 }
 x-sidebar[closed="true"] {
   animation: "fade-in" 0.1s ease-out forwards;
-}
+} */
 
-x-toggle {
+x-toggle.settings-toggle {
   position: absolute;
-  top: 5vh;
-  left: 1vw;
+  top: 2vh;
+  left: 2vw;
   background: var(--bkg-0);
   color: var(--frg-1);
   text-align: center;
@@ -106,17 +125,70 @@ x-toggle {
   justify-content: center;
   align-items: center;
 }
-x-toggle  p {
+x-toggle.settings-toggle p {
   padding: var(--small);
 }
-x-toggle[closed="false"] p {
+x-toggle[closed="false"].settings-toggle p {
   color: var(--frg-0);
   box-shadow: 0 0 4px -2px var(--frg-0) inset;
 }
-x-toggle[closed="true"] p {
+x-toggle[closed="true"].settings-toggle p {
   color: var(--frg-1);
   box-shadow: 0 0 4px -2px var(--frg-1) inset;
+}
 
+#settings {
+  position: absolute;
+  width: 70vw;
+  height: 80vh;
+  top: 5vw;
+  left: 15vw;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  padding: var(--large);
+  background-color: var(--bkg-0);
+  overflow: hidden;
+  transition: opacity 0.05s;
+  outline: 1px solid var(--bkg-1-tr);
+  box-shadow: 0 0 var(--medium) var(--x-small) var(--bkg-1-tr);
+}
+#settings[closed=true] {
+  opacity: 0;
+  transition: opacity 0.05s linear;
+  outline: none;
+}
+#settings section {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 var(--medium);
+}
+#settings section h3 {
+  color: var(--frg-1);
+}
+
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--medium);
+}
+.setting-item-header {
+  display: flex;
+  flex-direction: column;
+}
+.setting-item-header hr {
+  width: 100%;
+  margin-bottom: var(--large);
+  border: none;
+  background-color: var(--frg-1-tr);
+}
+.setting-item-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 

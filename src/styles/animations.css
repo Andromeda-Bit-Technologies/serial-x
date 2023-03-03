@@ -21,9 +21,18 @@
 
 @keyframes color-phase--blue {
 	0% {
-		text-shadow: 0 0 var(--small) var(--blue);
+		text-shadow: 0 0 var(--medium) var(--blue);
 	}
 	100% {
-		text-shadow: 0 0 var(--large) var(--blue);
+		text-shadow: 0 0 var(--xx-large) var(--blue);
+	}
+}
+
+@keyframes color-phase--black {
+	0% {
+		text-shadow: 1rem 0 var(--medium) black;
+	}
+	100% {
+		text-shadow: -1rem 0 var(--medium) black;
 	}
 }

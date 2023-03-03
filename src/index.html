@@ -9,43 +9,66 @@
   </head>
 
   <body>
+    
     <audio id="sound-interface-click">
       <source src="./assets/sounds/interface-click.mp3">
     </audio>
+
     <div class="container">
 
       <roll-container allow="up-down" id="roll-container">
 
         <roll-page>
 
-          <x-toggle target="sidebar-left" closed="false" class="sound-interface-click">
+          <x-toggle target="settings" class="settings-toggle sound-interface-click" closed="false">
             <p>Settings</p>
           </x-toggle>
 
-          <x-sidebar id="sidebar-left" closed="true">
-            <button class="btn menu-btn sound-interface-click">
-              Menu item 1
-            </button>
-            <button class="btn menu-btn sound-interface-click">
-              Menu item 2
-            </button>
-            <button class="btn menu-btn sound-interface-click">
-              Menu item 3
-            </button>
-            <button class="btn menu-btn sound-interface-click">
-              Menu item 4
-            </button>
-            <theme-switch themes="dark-theme light-theme" storage-key="serial-x">
-              <button 
-                onclick="[this.parentNode.dispatch(), this.textContent = this.parentNode.asTextContent()]"
-                class="btn menu-btn sound-interface-click">
-                Switch Theme
-              </button>
-            </theme-switch>
+          <x-overlay id="settings" closed="true">
 
-          </x-sidebar>
-          
-          <h1 class="is-not-selectable header-title">SERIAL <span class="color-phase--blue is-blue">X</span></h1>
+            <section id="settings-audio">
+              <div class="setting-item">
+                <div class="setting-item-header">
+                  <h3>Audio</h3>
+                  <hr>
+                </div>
+                <div class="setting-item-body">
+                  <label for="enable-sound">Enable sound</label>
+                  <input type="checkbox" checked id="enable-sound" name="enable-sound" class="sound-interface-click">
+                </div>
+              </div>
+              <div class="setting-item">
+                <div class="setting-item-header">
+                <div class="setting-item-body">
+                  <label for="sound-volume">Sound Volume</label>
+                  <input type="range" min="0" max="1" step="0.1" id="sound-volume" name="sound-volume"
+                    class="sound-interface-click">
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div class="setting-item">
+                <div class="setting-item-header">
+                  <h3>Theme</h3>
+                  <hr>
+                </div>
+                <div class="setting-item-body">
+                <theme-switch themes="dark-theme light-theme dark-violet-theme" storage-key="serial-x" id="theme-switch">
+                  <label for="settings-theme">Change Theme</label>
+                </theme-switch>
+                <button 
+                  is="theme-switch-ctrl"
+                  target="theme-switch" 
+                  class="btn sound-interface-click"
+                  name="settings-theme">
+                </button>
+              </div>
+              </div>
+            </section>
+          </x-overlay>
+
+          <h1 class="is-not-selectable header-title">SERIAL <span class="is-blue">X</span></h1>
         </roll-page>
 
         <roll-page>
@@ -57,15 +80,16 @@
         </roll-page>
 
       </roll-container>
-      
+
     </div>
 
   </body>
 
-  <script type="module" src="./js/page-roll.js"></script>
-  <script type="module" src="./js/theme-switch.js"></script>
-  <script type="module" src="./js/sidebar.js"></script>
-  <script type="module" src="./js/toggle.js"></script>
+  <script type="module" src="./js/w3.js"></script>
+  <script type="module" src="./js/components/page-roll.js"></script>
+  <script type="module" src="./js/components/theme-switch.js"></script>
+  <script type="module" src="./js/components/overlay.js"></script>
+  <script type="module" src="./js/components/toggle.js"></script>
   <script type="module" src="./main.js"></script>
 
 </html>

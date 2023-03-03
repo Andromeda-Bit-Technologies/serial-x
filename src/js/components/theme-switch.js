@@ -1,6 +1,7 @@
 class ThemeSwitch extends HTMLElement {
 	constructor() {
 		super();
+		this.id = 'theme-switch';
 		this.style.display = 'inline';
 		this.themes = this.getAttribute('themes').split(' ');
 		this.changeThemeEvent = new Event('theme-change');
@@ -23,8 +24,14 @@ class ThemeSwitch extends HTMLElement {
 		return document.querySelector(':root').className;
 	}
 
+	themeList() {
+		return this.themes;
+	}
+
 	asTextContent() {
-		return `${document.querySelector(':root').className.replace('-', ' ').replace('theme', '')}`;
+		return `${document.querySelector(':root').className.
+			replace('-', ' ').replace('theme', '').replace('-', '')
+		}`;
 	}
 
 	switch(by) {
@@ -45,4 +52,21 @@ class ThemeSwitch extends HTMLElement {
 	}
 }
 
+export class ThemeSwitchController extends HTMLButtonElement {
+	constructor() {
+		super();
+		this.onclick = function() {
+			document.getElementById(this.getAttribute('target')).switch(1);
+			this.textContent = document.getElementById(this.getAttribute('target'))
+				.asTextContent();
+		}
+	}
+	
+	connectedCallback() {
+		this.textContent = document.getElementById(this.getAttribute('target'))
+			.asTextContent();;
+	}
+}
+
 window.customElements.define('theme-switch', ThemeSwitch);
+window.customElements.define('theme-switch-ctrl', ThemeSwitchController, {extends: 'button'});

@@ -1,5 +1,10 @@
+input[type="checkbox"]  {
+	background: var(--bkg-0);
+	color: var(--frg-1);
+}
+
 .btn {
 	border: none;
-	outline: none;
+	/* outline: none; */
 	font-size: var(--medium);
 }
