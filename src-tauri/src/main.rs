@@ -3,7 +3,9 @@
     windows_subsystem = "windows"
 )]
 
+
 mod serialport;
+
 
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -13,6 +15,9 @@ fn greet(name: &str) -> String {
 }
 
 fn main() {
+    log4rs::init_file("log4rs.yaml", Default::default()).unwrap();
+    log::info!("Starting application");
+
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet])
         .run(tauri::generate_context!())

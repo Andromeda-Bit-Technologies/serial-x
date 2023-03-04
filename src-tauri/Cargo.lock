@@ -1428,6 +1428,7 @@ dependencies = [
  "arc-swap",
  "chrono",
  "derivative",
+ "flate2",
  "fnv",
  "humantime",
  "libc",
@@ -2423,8 +2424,9 @@ dependencies = [
 
 [[package]]
 name = "serial-x"
-version = "0.0.0"
+version = "0.1.0"
 dependencies = [
+ "log",
  "log4rs",
  "mio",
  "mio-serial",

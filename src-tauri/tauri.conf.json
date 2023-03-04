@@ -16,6 +16,23 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": false,
+        "requestUserAttention": true,
+        "setResizable": true,
+        "maximize": true,
+        "unmaximize": true,
+        "minimize": true,
+        "unminimize": true,
+        "show": true,
+        "hide": true,
+        "close": true,
+        "setAlwaysOnTop": true,
+        "setSize": true,
+        "setPosition": true,
+        "setFullscreen": true,
+        "print": true
       }
     },
     "bundle": {
@@ -61,7 +78,7 @@
         "fullscreen": false,
         "height": 768,
         "resizable": true,
-        "title": "SERIAL Ω  [β: release]",
+        "title": "SERIAL X version: 0.1.0 γ",
         "width": 1024
       }
     ]

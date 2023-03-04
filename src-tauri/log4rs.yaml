@@ -1,0 +1,44 @@
+# Scan this file for changes every x seconds
+refresh_rate: 30 seconds
+
+appenders:
+  stdout:
+    kind: rolling_file
+    path: log/logs/stdout.log
+    encoder:
+      pattern: "{d} - {m}{n}"
+    policy:
+      trigger:
+        kind: size
+        limit: 30 mb
+      roller:
+        kind: fixed_window
+        pattern: log/stdout/log_{}.gz
+        count: 30
+        base: 1
+  app:
+    kind: rolling_file
+    path: log/logs/app.log
+    encoder:
+      pattern: "{d} - {m}{n}"
+    policy:
+      trigger:
+        kind: size
+        limit: 30 mb
+      roller:
+        kind: fixed_window
+        pattern: log/app/log_{}.gz
+        count: 30
+        base: 1
+
+root:
+  level: info
+  appenders:
+    - stdout
+
+loggers:
+  app:
+    level: trace
+    appenders:
+      - app
+    additive: false

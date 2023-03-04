@@ -1,3 +1,5 @@
+import { appWindow } from '@tauri-apps/api/window';
+
 // const { invoke } = window.__TAURI__.tauri;
 
 // let greetInputEl;
@@ -61,6 +63,22 @@
 			interfaceClick.volume = Number(event.target.value);
 			interfaceVolume = interfaceClick.volume;
 			localStorage.setItem('interface-volume', interfaceClick.volume)
+		});
+
+		// window settings
+		document.getElementById('window-always-on-top').addEventListener('change', function(event) {
+			if (event.target.checked === 'checked') {
+				appWindow.setAlwaysOnTop(true);
+			} else {
+				appWindow.setAlwaysOnTop(false);
+			}
+		});
+		document.getElementById('window-fullscreen').addEventListener('change', function(event) {
+			if (event.target.checked === 'checked') {
+				appWindow.setFullscreen(true);
+			} else {
+				appWindow.setFullscreen(false);
+			}
 		});
 	});
 })();
