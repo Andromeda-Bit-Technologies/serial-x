@@ -64,22 +64,6 @@ label {
   font-size: var(--xx-large);
 }
 
-.dark-theme .header-title {
-  animation: color-phase--blue 120s alternate infinite;
-}
-.light-theme .header-title {
-  animation: color-phase--black 120s alternate infinite;
-}
-
-.bkg-img {
-  background: var(--bkg-image) center no-repeat;
-  background-size: cover;
-}
-
-.color-phase--blue {
-  animation: color-phase 2s ease-in-out infinite alternate;
-}
-
 roll-container {
   width: 100%;
   height: 100%;
@@ -139,10 +123,9 @@ x-toggle[closed="true"].settings-toggle p {
 
 #settings {
   position: absolute;
-  width: 70vw;
-  height: 80vh;
+  width: 80vw;
   top: 5vw;
-  left: 15vw;
+  left: 10vw;
   z-index: 1;
   display: flex;
   justify-content: flex-start;
@@ -151,14 +134,45 @@ x-toggle[closed="true"].settings-toggle p {
   overflow: hidden;
   transition: opacity 0.05s;
   outline: 1px solid var(--bkg-1-tr);
-  box-shadow: 0 0 var(--medium) var(--x-small) var(--bkg-1-tr);
+  box-shadow: 0 0 0.25rem var(--frg-1-tr);
 }
 #settings[closed=true] {
   opacity: 0;
   transition: opacity 0.05s linear;
   outline: none;
 }
-#settings section {
+
+#settings settings-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+#settings settings-panel setting-category {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: var(--small);
+}
+#settings settings-panel setting-category h3 {
+  color: var(--frg-1);
+}
+#settings settings-panel setting-category hr {
+  background: var(--frg-1-tr);
+  border: none;
+  height: 2px;
+}
+#settings settings-panel setting-category setting-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--medium);
+  color: var(--red);
+}
+
+/* #settings section {
   display: flex;
   flex-direction: column;
   width: 30%;
@@ -188,8 +202,9 @@ x-toggle[closed="true"].settings-toggle p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-}
+} */
 
 
 @media screen and (max-width: 600px){

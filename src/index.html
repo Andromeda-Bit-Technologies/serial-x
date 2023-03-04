@@ -9,11 +9,11 @@
   </head>
 
   <body>
-    
+
     <audio id="sound-interface-click">
       <source src="./assets/sounds/interface-click.mp3">
     </audio>
-
+   
     <div class="container">
 
       <roll-container allow="up-down" id="roll-container">
@@ -26,79 +26,68 @@
 
           <x-overlay id="settings" closed="true">
 
-            <section id="settings-audio">
-              <div class="setting-item">
-                <div class="setting-item-header">
-                  <h3>Audio</h3>
-                  <hr>
-                </div>
-                <div class="setting-item-body">
+            <settings-panel>
+
+              <setting-category id="settings-audio">
+                <h3>Audio</h3>
+                <hr>
+                <setting-item>
                   <label for="enable-sound">Enable sound</label>
                   <input type="checkbox" checked id="enable-sound" name="enable-sound" class="sound-interface-click">
-                </div>
-              </div>
-              <div class="setting-item">
-                <div class="setting-item-header">
-                <div class="setting-item-body">
+                </setting-item>
+
+                <setting-item>
                   <label for="sound-volume">Sound Volume</label>
                   <input type="range" min="0" max="1" step="0.1" id="sound-volume" name="sound-volume"
                     class="sound-interface-click">
-                </div>
-              </div>
-            </section>
+                </setting-item>
+              </setting-category>
 
-            <section>
-              <div class="setting-item">
-                <div class="setting-item-header">
-                  <h3>Theme</h3>
-                  <hr>
-                </div>
-                <div class="setting-item-body">
-                <theme-switch themes="dark-theme light-theme dark-violet-theme" storage-key="serial-x" id="theme-switch">
-                  <label for="settings-theme">Change Theme</label>
-                </theme-switch>
-                <button 
-                  is="theme-switch-ctrl"
-                  target="theme-switch" 
-                  class="btn sound-interface-click"
-                  name="settings-theme">
-                </button>
-              </div>
-              </div>
-            </section>
+              <setting-category category="Theme" id="settings-theme">
+                <h3>Theme</h3>
+                <hr>
+                <setting-item>
+                  <theme-switch themes="dark-theme light-theme dark-violet-theme" storage-key="serial-x"
+                    id="theme-switch">
+                    <label for="settings-theme">Change Theme</label>
+                  </theme-switch>
+                  <button is="theme-switch-ctrl" target="theme-switch" class="btn sound-interface-click"
+                    name="settings-theme">
+                  </button>
+                </setting-item>
+              </setting-category>
 
-            <section>
-              <div class="setting-item">
-                <div class="setting-item-header">
-                  <h3>Window</h3>
-                  <hr>
-                </div>
-                <div class="setting-item-body">
+              <setting-category category="Window">
+                <h3>Window</h3>
+                <hr>
+                <setting-item>
                   <label for="window-always-on-top">Always on top</label>
                   <input type="checkbox" name="window-always-on-top" id="window-always-on-top">
-                </div>
-              </div>
-
-              <div class="setting-item">
-                <div class="setting-item-header">
-                </div>
-                <div class="setting-item-body">
-                  <label for="window-fullscreen">Always on top</label>
+                </setting-item>
+                <setting-item>
+                  <label for="window-fullscreen">Fullscreen</label>
                   <input type="checkbox" name="window-fullscreen" id="window-fullscreen">
-                </div>
-              </div>
-            </section>
+                </setting-item>
+              </setting-category>
+
+            </settings-panel>
+
           </x-overlay>
 
-          <h1 class="is-not-selectable header-title">SERIAL <span class="is-blue">X</span></h1>
+          <h1 class="is-not-selectable header-title">SERIAL <span class="is-frg-1">X</span></h1>
+
         </roll-page>
 
         <roll-page>
+
           <h1>Hello 2</h1>
+
         </roll-page>
 
         <roll-page>
+
           <h1>Page 3</h1>
+          
         </roll-page>
 
       </roll-container>
@@ -107,11 +96,11 @@
 
   </body>
 
-  <script type="module" src="./js/w3.js"></script>
+
   <script type="module" src="./js/components/page-roll.js"></script>
   <script type="module" src="./js/components/theme-switch.js"></script>
   <script type="module" src="./js/components/overlay.js"></script>
   <script type="module" src="./js/components/toggle.js"></script>
+  <script type="module" src="./js/components/settings.js"></script>
   <script type="module" src="./main.js"></script>
-
 </html>

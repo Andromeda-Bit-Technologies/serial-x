@@ -2,6 +2,12 @@
 .is-blue {
 	color: var(--blue);
 }
+.is-frg-0 {
+	color: var(--frg-0);
+}
+.is-frg-1 {
+	color: var(--frg-1);
+}
 
 /* flex */
 .is-flex {
