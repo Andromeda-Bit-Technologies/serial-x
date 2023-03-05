@@ -130,12 +130,10 @@ x-toggle[closed="true"].settings-toggle p {
   padding: var(--large);
   background-color: var(--bkg-0);
   overflow: hidden;
-  transition: opacity 0.05s;
-  box-shadow: 0 0 0.25rem var(--frg-1-tr);
+  box-shadow: 0 0 var(--x-small) var(--frg-0-tr);
 }
 #settings[closed=true] {
   opacity: 0;
-  transition: opacity 0.05s linear;
   outline: none;
 }
 
@@ -168,41 +166,6 @@ x-toggle[closed="true"].settings-toggle p {
   margin-bottom: var(--medium);
   color: var(--red);
 }
-
-/* #settings section {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  margin: 0 var(--medium);
-}
-#settings section h3 {
-  color: var(--frg-1);
-}
-
-
-.setting-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--medium);
-}
-.setting-item-header {
-  display: flex;
-  flex-direction: column;
-}
-.setting-item-header hr {
-  width: 100%;
-  margin-bottom: var(--large);
-  border: none;
-  background-color: var(--frg-1-tr);
-}
-.setting-item-body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-} */
-
 
 @media screen and (max-width: 600px){
   h1 {

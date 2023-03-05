@@ -3,16 +3,12 @@ class ThemeSwitch extends HTMLElement {
 		super();
 		this.style.display = 'inline';
 		this.themes = this.getAttribute('themes').split(' ');
-		this.changeThemeEvent = new Event('theme-change');
 		let savedThemeName = localStorage.getItem(this.getAttribute('storage-key'));
 		if (savedThemeName !== undefined) {
 			document.querySelector(':root').className = savedThemeName;
 		} else {
 			this.switch(1);
 		}
-		this.addEventListener('theme-change', function onThemeChange() {
-			this.switch(1);
-		});
 	}
 	
 	dispatch() {
