@@ -73,6 +73,7 @@ class RollPageContainer extends HTMLElement{
 	handleTouch() {
 		// if (touchendY < touchstartY) {
 		// 	pageNumber -= 1;
+		
 		// }
 
 		// if (touchendY < touchstartY) {
