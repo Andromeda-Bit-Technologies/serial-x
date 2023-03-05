@@ -3,6 +3,7 @@
     "@tauri-apps/cli": "^1.2.3"
   },
   "dependencies": {
+    "@appnest/web-router": "^1.4.2",
     "@tauri-apps/api": "^1.2.0"
   }
 }

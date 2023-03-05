@@ -36,14 +36,12 @@ h1, h2, h3, h4 {
 button {
   width: 10vw;
   padding: var(--small) var(--x-small);
-  background: var(--bkg-0);
-  outline: 1px solid var(--frg-1-tr);
+  background: var(--bkg-1);
   margin: var(--x-small);
 }
 
 button:hover {
   color: var(--frg-1);
-  outline: 1px solid var(--frg-0-tr);
 }
 
 button:active {
@@ -133,7 +131,6 @@ x-toggle[closed="true"].settings-toggle p {
   background-color: var(--bkg-0);
   overflow: hidden;
   transition: opacity 0.05s;
-  outline: 1px solid var(--bkg-1-tr);
   box-shadow: 0 0 0.25rem var(--frg-1-tr);
 }
 #settings[closed=true] {

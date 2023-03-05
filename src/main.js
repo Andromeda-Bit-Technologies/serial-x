@@ -1,5 +1,5 @@
 import { initSoundEffects, initWindowsSettings } from './js/init';
-// const { invoke } = window.__TAURI__.tauri;
+const { invoke } = window.__TAURI__.tauri;
 
 // let greetInputEl;
 // let greetMsgEl;
@@ -16,12 +16,17 @@ import { initSoundEffects, initWindowsSettings } from './js/init';
 //     .querySelector("#greet-button")
 //     .addEventListener("click", () => greet());
 // });
+// function listPorts() {
+// 	console.log(invoke('list_ports'));
+// }
+
 (function init() {
 	// let container = document.getElementById('roll-container');
 	// let rollPage = document.createElement('roll-page');
 	// rollPage.innerHTML = '<h1>This is dynamic content</h1>';
 	// container.appendChild(rollPage);
-	// includeHTML();
+	// let portList = await invoke('list_ports');
+	// console.log(portList);
 	window.addEventListener('DOMContentLoaded', function() {
 		initSoundEffects();
 		initWindowsSettings();

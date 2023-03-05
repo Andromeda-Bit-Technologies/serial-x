@@ -20,12 +20,3 @@ export class SettingItem extends HTMLElement {
 window.customElements.define('settings-panel', SettingsPanel);
 window.customElements.define('settings-category', SettingCategory);
 window.customElements.define('settings-item', SettingItem);
-
-{/* <settings-panel>
-	<settings-panel-category category="Audio">
-		<settings-panel-item>
-			<label>X</label>
-			<input>
-		</settings-panel-item>
-	</settings-panel-category>
-</settings-panel> */}
