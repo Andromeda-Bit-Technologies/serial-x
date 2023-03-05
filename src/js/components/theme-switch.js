@@ -1,7 +1,6 @@
 class ThemeSwitch extends HTMLElement {
 	constructor() {
 		super();
-		this.id = 'theme-switch';
 		this.style.display = 'inline';
 		this.themes = this.getAttribute('themes').split(' ');
 		this.changeThemeEvent = new Event('theme-change');
