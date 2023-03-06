@@ -1,10 +1,15 @@
-input[type="checkbox"]  {
-	background: var(--bkg-0);
-	color: var(--frg-1);
+input[type="checkbox"] {
+	accent-color: var(--frg-1);
+	background: var(--bkg-2);
+	border: none;
+	outline: none;
+}
+input[type="slider"] {
+	accent-color: var(--frg-1);
+	background: var(--bkg-2);
 }
 
+
 .btn {
-	border: none;
-	/* outline: none; */
-	font-size: var(--medium);
+	color: var(--frg-0);
 }

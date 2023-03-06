@@ -1,12 +1,14 @@
 .light-theme {
-	--bkg-0: #ffffff;
-	--bkg-0-tr: #ffffff55;
-	--bkg-1: #e6e6e6;
-	--bkg-1-tr: #e6e6e655;
-	--frg-0: #000000;
-	--frg-0-tr: #000000aa;
-	--frg-1: #222222;
-	--frg-1-tr: #22222255;
+	--bkg-0: #FFFFFF;
+	--bkg-0-tr: #FFFFFF55;
+	--bkg-1: #FAFBF4;
+	--bkg-1-tr: #FAFBF455;
+	--bkg-2: #dfecff;
+	--bkg-2-tr: #D7DEAB55;
+	--frg-0: #3d6fb9;
+	--frg-0-tr: #3d6fb9aa;
+	--frg-1: #3db899;
+	--frg-1-tr: #3db89955;
 	--red: #c23d3d;
 	--yellow: #c2c23d;
 	--orange: #c2803d;

@@ -12,7 +12,7 @@ fn main() {
     log::info!("Starting application");
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![serialport::list_ports])
+        .invoke_handler(tauri::generate_handler![serialport::scan_ports])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

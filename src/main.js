@@ -1,4 +1,8 @@
-import { initSoundEffects, initWindowsSettings } from './js/init';
+import { 
+	initSoundEffects,
+	initWindowsSettings,
+	initPortTableClickHandlers
+} from './js/init';
 const { invoke } = window.__TAURI__.tauri;
 
 // let greetInputEl;
@@ -30,5 +34,6 @@ const { invoke } = window.__TAURI__.tauri;
 	window.addEventListener('DOMContentLoaded', function() {
 		initSoundEffects();
 		initWindowsSettings();
+		initPortTableClickHandlers();
 	});
 })();

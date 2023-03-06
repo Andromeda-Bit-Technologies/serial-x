@@ -62,3 +62,13 @@ export function initWindowsSettings() {
 		}
 	});
 }
+
+export function initPortTableClickHandlers() {
+	// port-table onclick handlers
+	Array.from(document.getElementsByClassName('port-table-item')).map((item) => {
+		item.addEventListener('click', function() {
+			console.log('CLICK');
+			document.getElementById(item.getAttribute('wormhole-to')).scrollIntoView();
+		});
+	})
+}

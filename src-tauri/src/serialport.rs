@@ -23,7 +23,7 @@ pub struct PortInfo {
 }
 
 #[tauri::command]
-pub fn list_ports() -> std::string::String {
+pub fn scan_ports() -> std::string::String {
 	let ports = serialport::available_ports();
 	match ports {
 		Ok(ports) => {
@@ -80,10 +80,16 @@ pub fn list_ports() -> std::string::String {
 
 			match serde_json::to_string(&ports_info_list) {
 				Ok(result) => result,
-				Err(_error) => String::from("SERDE_JSON ERROR"),
+				Err(error) => {
+					log::error!("{:?}", error);
+					String::from("SERDE_JSON ERROR")
+				},
 			}
 
 		},
-		Err(_error) => String::from("PORT ERROR"),
+		Err(error) => {
+			log::error!("{:?}", error);
+			String::from("PORT ERROR")
+		},
 	}
 }
