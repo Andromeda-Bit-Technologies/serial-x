@@ -1,9 +1,26 @@
 {
   "devDependencies": {
-    "@tauri-apps/cli": "^1.2.3"
+    "@tauri-apps/cli": "^1.2.3",
+    "parcel": "^2.8.3"
   },
   "dependencies": {
-    "@appnest/web-router": "^1.4.2",
     "@tauri-apps/api": "^1.2.0"
-  }
+  },
+  "name": "serial-x",
+  "description": "Serial Port Explorer, Logger and more.",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bitfields-Universe/serial-x.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bitfields-Universe/serial-x/issues"
+  },
+  "homepage": "https://github.com/Bitfields-Universe/serial-x#readme"
 }

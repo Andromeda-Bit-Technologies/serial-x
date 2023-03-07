@@ -51,7 +51,8 @@
                     id="theme-switch">
                     <label for="settings-theme">Change Theme</label>
                   </theme-switch>
-                  <button is="theme-switch-ctrl" target="theme-switch" class="btn sound-interface-click"
+                  <button is="theme-switch-ctrl" target="theme-switch"
+                    class="btn sound-interface-click"
                     name="settings-theme">
                   </button>
                 </setting-item>
@@ -84,7 +85,8 @@
 
         <roll-page>
           <div class="container">
-            <port-table scan-interval="2000"></port-table>
+            <port-scanner scan-interval="10000" id="port-scanner"></port-scanner>
+            <port-table></port-table>
           </div>
         </roll-page>
 
@@ -99,6 +101,7 @@
   <script type="module" src="./js/components/toggle.js"></script>
   <script type="module" src="./js/components/settings.js"></script>
   <script type="module" src="./js/components/theme-switch.js"></script>
+  <script type="module" src="./js/components/port-scanner.js"></script>
   <script type="module" src="./js/components/port-table.js"></script>
   <script type="module" src="./main.js"></script>
   

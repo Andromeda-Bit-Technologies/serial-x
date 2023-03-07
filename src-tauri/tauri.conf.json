@@ -3,12 +3,12 @@
     "beforeDevCommand": "parcel ./src/**.html",
     "beforeBuildCommand": "parcel build ./src/**.html",
     "devPath": "http://localhost:1234",
-    "distDir": "../dist",
+    "distDir": "./dist",
     "withGlobalTauri": true
   },
   "package": {
     "productName": "serial-x",
-    "version": "0.0.0"
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {

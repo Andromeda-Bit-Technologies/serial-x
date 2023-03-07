@@ -1,35 +1,15 @@
-const { invoke } = window.__TAURI__.tauri;
-
-
-
 export class PortTable extends HTMLElement {
 	constructor() {
 		super();
+		this.id = 'port-table';
 	}
 
 	connectedCallback() {
-		if (this.hasAttribute('scan-interval')) {
-			setInterval(() => {
-				invoke('scan_ports').then((data) => {
-					this.innerHTML = '';
-					this.buildTable(data);
-				});
-			}, Number(this.getAttribute('scan-interval')) || 1000);
-		} else {
-			let scanButton = document.createElement('button');
-			scanButton.textContent = 'Scan Ports';
-			scanButton.className = 'btn';
-			scanButton.onclick = () => {
-				this.innerHTML = '';
-				invoke('scan_ports').then((data) => this.buildTable(data));
-			}
-			this.appendChild(scanButton);
-		}
+		document.getElementById('port-scanner').addEventListener('port-scan-done', this.buildTable);
 	}
 
-	buildTable(data) {
-		let ports = JSON.parse(data);
-
+	buildTable(event) {
+		let ports = JSON.parse(event.detail);
 		if (ports.length !== 0) {
 			let table = document.createElement('table');
 			let tableHeader = document.createElement('thead');
@@ -59,7 +39,10 @@ export class PortTable extends HTMLElement {
 			for (let port of ports) {
 				let tableRow = document.createElement('tr');
 				tableRow.setAttribute('class', 'port-table-item');
-				tableRow.setAttribute('wormhole-to', port.name);
+				tableRow.setAttribute('ref-to', `port-${port.name.toLowerCase()}`);
+				tableRow.onclick = function(event) {
+					document.getElementById(event.target.getAttribute('ref-to')).scrollIntoView();
+				}
 
 				let name = document.createElement('td');
 				name.textContent = port.name;
@@ -85,25 +68,12 @@ export class PortTable extends HTMLElement {
 			}
 
 			table.appendChild(tableBody);
-			this.appendChild(table);
+			document.getElementById('port-table').innerHTML = '';
+			document.getElementById('port-table').appendChild(table);
 		} else {
-			this.innerHTML = '<h1>No Devices connected</h1>';
+			document.getElementById('port-table').innerHTML = '<h1>No Devices Connected</h1>';
 		}
 	}
 }
-
-
-// export class PortScanner extends HTMLElement {
-// 	constructor() {
-// 		super();
-// 	}
-
-// 	connectedCallback() {
-// 		setInterval(() => {
-// 			invoke('scan_ports').then((data) => this.ports = data);
-// 		}, Number(this.getAttribute('scan-interval')) || 1000);
-// 	}
-// }
-
 
 window.customElements.define('port-table', PortTable);
