@@ -3,7 +3,7 @@
     "beforeDevCommand": "parcel ./src/**.html",
     "beforeBuildCommand": "parcel build ./src/**.html",
     "devPath": "http://localhost:1234",
-    "distDir": "./dist",
+    "distDir": "../dist",
     "withGlobalTauri": true
   },
   "package": {
@@ -16,6 +16,11 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "fs": {
+        "readFile": true,
+        "writeFile": true,
+        "removeFile": true
       },
       "window": {
         "all": false,
@@ -49,7 +54,7 @@
         "icons/128x128@2x.png",
         "icons/icon.ico"
       ],
-      "identifier": "com.serial-x.dev",
+      "identifier": "serial.x.app",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -78,7 +83,7 @@
         "fullscreen": false,
         "height": 768,
         "resizable": true,
-        "title": "SERIAL X (version β)",
+        "title": "SERIAL X",
         "width": 1024
       }
     ]
