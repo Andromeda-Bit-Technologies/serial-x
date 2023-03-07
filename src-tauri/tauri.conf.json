@@ -18,9 +18,7 @@
         "open": true
       },
       "fs": {
-        "readFile": true,
-        "writeFile": true,
-        "removeFile": true
+        "all": true
       },
       "window": {
         "all": false,
@@ -63,7 +61,7 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": [],
+      "resources": ["log"],
       "shortDescription": "",
       "targets": "all",
       "windows": {
