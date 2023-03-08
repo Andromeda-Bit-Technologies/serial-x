@@ -1,6 +1,6 @@
 [package]
 name = "serial-x"
-version = "0.1.0"
+version = "0.2.0"
 description = "Serial port explorer, logger, decoder, and more"
 authors = ["josiphaboic@gmail.com"]
 license = ""
@@ -16,7 +16,7 @@ tauri-build = { version = "1.2.1", features = [] }
 serde_json = "1.0.93"
 serde = { version = "1.0.152", features = ["derive"] }
 log4rs = { version="1.2.0", features = ["gzip"] }
-tauri = { version = "1.2.4", features = ["fs-all", "shell-open", "window-close", "window-hide", "window-maximize", "window-minimize", "window-print", "window-request-user-attention", "window-set-always-on-top", "window-set-fullscreen", "window-set-position", "window-set-resizable", "window-set-size", "window-show", "window-unmaximize", "window-unminimize"] }
+tauri = { version = "1.2.4", features = ["api-all"] }
 log = "0.4.17"
 serialport = "4.2.0"
 
