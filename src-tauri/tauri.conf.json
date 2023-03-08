@@ -62,7 +62,7 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": ["../config", "../log"],
+      "resources": ["./config", "./log"],
       "shortDescription": "",
       "targets": "all",
       "windows": {
