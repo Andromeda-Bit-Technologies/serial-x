@@ -2,7 +2,7 @@ import { appWindow } from '@tauri-apps/api/window';
 
 
 
-export function initSoundEffects() {
+function initSoundEffects() {
 	// buttons sounds
 	let buttonsWithSound = document.getElementsByClassName('sound-interface-click');
 	let interfaceClick = document.getElementById('sound-interface-click');
@@ -22,7 +22,9 @@ export function initSoundEffects() {
 			}
 		});
 	});
+}
 
+function loadSettings() {
 	// set the checkbox to saved value
 	if (localStorage.getItem('interface-volume-enabled') === 'false') {
 		document.getElementById('enable-sound').checked = false;
@@ -44,8 +46,7 @@ export function initSoundEffects() {
 	});
 }
 
-
-export function initWindowsSettings() {
+function initWindowsSettings() {
 	// window settings
 	document.getElementById('window-always-on-top').addEventListener('change', function (event) {
 		if (event.target.checked) {
@@ -62,3 +63,9 @@ export function initWindowsSettings() {
 		}
 	});
 }
+
+export function init() {
+	initSoundEffects();
+	loadSettings();
+	initWindowsSettings();
+};
