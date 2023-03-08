@@ -12,12 +12,13 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true,
+      "all": false,
       "shell": {
         "all": false,
         "open": true
       },
       "fs": {
+        "scope": ["$CONFIG", "$DATA", "$LOG"],
         "all": true
       },
       "window": {
@@ -61,7 +62,7 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": [],
+      "resources": ["../config", "../log"],
       "shortDescription": "",
       "targets": "all",
       "windows": {
