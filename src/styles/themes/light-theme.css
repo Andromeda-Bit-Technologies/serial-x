@@ -1,19 +1,21 @@
 .light-theme {
-	--bkg-0: #FFFFFF;
-	--bkg-0-tr: #FFFFFF55;
-	--bkg-1: #FAFBF4;
-	--bkg-1-tr: #FAFBF455;
-	--bkg-2: #dfecff;
-	--bkg-2-tr: #D7DEAB55;
-	--frg-0: #3d6fb9;
-	--frg-0-tr: #3d6fb9aa;
-	--frg-1: #3db899;
-	--frg-1-tr: #3db89955;
+	--bkg-0: #ffffff;
+	--bkg-0-tr: #ffffff55;
+	--bkg-1: #c2e4ff;
+	--bkg-1-tr: #c2e4ff55;
+	--bkg-2: #8ecffd;
+	--bkg-2-tr: #8ecffd;
+	--frg-0: #002e52;
+	--frg-0-tr: #00488055;
+	--frg-1: #005799;
+	--frg-1-tr: #00579955;
 	--red: #c23d3d;
 	--yellow: #c2c23d;
 	--orange: #c2803d;
 	--green: #5ec23d;
 	--blue: #3da1c2;
+
+	--bkg-image: url("/src/assets/graphics/svg/sun-tornado.svg");
 
 	--xx-small: 0.1rem;
 	--x-small: 0.25rem;

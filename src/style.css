@@ -69,7 +69,9 @@ roll-container {
 }
 
 roll-page {
-  background: var(--bkg-0);
+  background-color: var(--bkg-0);
+  background-image: var(--bkg-image);
+  background-size: cover;
 }
 
 roll-page h1 {

@@ -1,0 +1,3 @@
+// {type:activity}
+
+(start)-><a>[Send Data]->(Log)->(TextDecoder)->(WritebaleStream)->(Intrepeter)->(end)
