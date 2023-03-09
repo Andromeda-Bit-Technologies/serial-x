@@ -1,12 +1,12 @@
 .light-theme {
 	--bkg-0: #ffffff;
 	--bkg-0-tr: #ffffff55;
-	--bkg-1: #c2e4ff;
-	--bkg-1-tr: #c2e4ff55;
-	--bkg-2: #8ecffd;
-	--bkg-2-tr: #8ecffd;
-	--frg-0: #002e52;
-	--frg-0-tr: #00488055;
+	--bkg-1: #d4ecff;
+	--bkg-1-tr: #d4ecff55;
+	--bkg-2: #b7e1ff;
+	--bkg-2-tr: #b7e1ff55;
+	--frg-0: #000000;
+	--frg-0-tr: #00000055;
 	--frg-1: #005799;
 	--frg-1-tr: #00579955;
 	--red: #c23d3d;

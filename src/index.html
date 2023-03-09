@@ -73,6 +73,18 @@
                 </setting-item>
               </setting-category>
 
+              <setting-category category="Port Scanner">
+                <h3>Port Scanner</h3>
+                <hr>
+                <setting-item>
+                  <label for="port-scanner-interval" id="port-scanner-interval-label">
+                  Interval
+                  </label>
+                  <input type="range" min="500" max="10000" step="100" name="port-scanner-interval" id="port-scanner-interval"
+                    class="sound-interface-click">
+                </setting-item>
+              </setting-category>
+
             </settings-panel>
 
           </x-overlay>
@@ -85,7 +97,7 @@
 
         <roll-page>
           <div class="container">
-            <port-scanner scan-interval="10000" id="port-scanner"></port-scanner>
+            <port-scanner scan-interval="3000" id="port-scanner"></port-scanner>
             <port-table></port-table>
           </div>
         </roll-page>

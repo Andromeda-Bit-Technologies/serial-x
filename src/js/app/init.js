@@ -2,7 +2,7 @@ import { appWindow } from '@tauri-apps/api/window';
 
 
 
-function initSoundEffects() {
+export function initSoundEffects() {
 	// buttons sounds
 	let buttonsWithSound = document.getElementsByClassName('sound-interface-click');
 	let interfaceClick = document.getElementById('sound-interface-click');
@@ -24,7 +24,7 @@ function initSoundEffects() {
 	});
 }
 
-function loadSettings() {
+export function loadSettings() {
 	// set the checkbox to saved value
 	if (localStorage.getItem('interface-volume-enabled') === 'false') {
 		document.getElementById('enable-sound').checked = false;
@@ -46,7 +46,7 @@ function loadSettings() {
 	});
 }
 
-function initWindowsSettings() {
+export function initWindowsSettings() {
 	// window settings
 	document.getElementById('window-always-on-top').addEventListener('change', function (event) {
 		if (event.target.checked) {
@@ -64,8 +64,9 @@ function initWindowsSettings() {
 	});
 }
 
-export function init() {
-	initSoundEffects();
-	loadSettings();
-	initWindowsSettings();
-};
+export function initPortScanInterval() {
+	document.getElementById("port-scanner-interval").addEventListener('change', function (event) {
+		document.getElementById('port-scanner').setAttribute('scan-interval', Number(event.target.value));
+		document.getElementById('port-scanner-interval-label').innerHTML = `Interval <span class="is-frg-1">${Number(event.target.value)}ms</span>`;
+	});
+}
