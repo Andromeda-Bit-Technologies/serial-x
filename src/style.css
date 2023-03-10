@@ -36,13 +36,17 @@ h1, h2, h3, h4 {
 button {
   width: 10vw;
   padding: var(--small) var(--x-small);
-  background: var(--bkg-2);
+  color: var(--frg-0);
+  background: var(--bkg-1);
   border: none;
+  border-radius: var(--x-small);
   font-size: var(--medium);
 }
 
 button:hover {
-  color: var(--frg-1);
+  background: var(--frg-1);
+  /* outline: 2px solid var(--frg-1); */
+  color: var(--bkg-0);
 }
 
 button:active {
@@ -130,7 +134,6 @@ x-toggle[closed="true"].settings-toggle p {
   z-index: 1;
   display: flex;
   justify-content: center;
-  padding: var(--medium);
   background-color: var(--bkg-0);
   overflow: hidden;
   box-shadow: 0 0 var(--xx-small) var(--frg-1-tr);
@@ -149,7 +152,6 @@ x-toggle[closed="true"].settings-toggle p {
 #settings settings-panel setting-category {
   display: flex;
   flex-direction: column;
-  width: 50%;
   padding: var(--large);
 }
 #settings settings-panel setting-category h3 {
@@ -166,13 +168,9 @@ x-toggle[closed="true"].settings-toggle p {
   justify-content: space-between;
   align-items: center;
   min-width: 25vw;
-  margin-bottom: var(--medium);
-  padding: var(--small);
+  min-height: 3vh;
+  padding: var(--medium);
   color: var(--red);
-}
-#settings settings-panel setting-category setting-item label {
-  min-width: 200px;
-  width: 100%;
 }
 
 
@@ -184,7 +182,6 @@ port-table {
   height: 90%;
   padding: 0;
 }
-
 port-table table {
   width: 80vw;
   outline: 1px solid var(--bkg-1);

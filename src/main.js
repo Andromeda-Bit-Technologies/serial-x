@@ -1,4 +1,5 @@
-import { initSoundEffects, initWindowsSettings, loadSettings, initPortScanInterval } from './js/app/init';
+// import { initSoundEffects, initWindowsSettings, loadSettings, initPortScanInterval } from './js/app/init';
+import { App } from './js/app/init';
 const { invoke } = window.__TAURI__.tauri;
 
 // let greetInputEl;
@@ -28,9 +29,6 @@ const { invoke } = window.__TAURI__.tauri;
 	// let portList = await invoke('list_ports');
 	// console.log(portList);
 	window.addEventListener('DOMContentLoaded', function() {
-		initSoundEffects();
-		initWindowsSettings();
-		loadSettings();
-		initPortScanInterval();
+		App.init();
 	});
 })();

@@ -10,8 +10,8 @@
 
   <body>
 
-    <audio id="sound-interface-click">
-      <source src="./assets/sounds/interface-click.mp3">
+    <audio id="audio-interface-click">
+      <source src="assets/audio/interface/interface-click.mp3">
     </audio>
    
     <div class="container">
@@ -20,7 +20,7 @@
 
         <roll-page>
 
-          <x-toggle target="settings" class="settings-toggle sound-interface-click" closed="false">
+          <x-toggle target="settings" class="settings-toggle audio-interface-click" closed="false">
             <p>Settings</p>
           </x-toggle>
 
@@ -32,14 +32,14 @@
                 <h3>Audio</h3>
                 <hr>
                 <setting-item>
-                  <label for="enable-sound">Enable sound</label>
-                  <input type="checkbox" checked id="enable-sound" name="enable-sound" class="sound-interface-click">
+                  <label for="enable-audio">Enable audio</label>
+                  <input type="checkbox" checked id="enable-audio" name="enable-audio" class="audio-interface-click">
                 </setting-item>
 
                 <setting-item>
-                  <label for="sound-volume">Sound Volume</label>
-                  <input type="range" min="0" max="1" step="0.1" id="sound-volume" name="sound-volume"
-                    class="sound-interface-click">
+                  <label for="audio-volume">Volume</label>
+                  <input type="range" min="0" max="1" step="0.1" id="audio-volume" name="audio-volume"
+                    class="audio-interface-click">
                 </setting-item>
               </setting-category>
 
@@ -52,7 +52,7 @@
                     <label for="settings-theme">Change Theme</label>
                   </theme-switch>
                   <button is="theme-switch-ctrl" target="theme-switch"
-                    class="btn sound-interface-click"
+                    class="btn audio-interface-click"
                     name="settings-theme">
                   </button>
                 </setting-item>
@@ -64,12 +64,12 @@
                 <setting-item>
                   <label for="window-always-on-top">Always on top</label>
                   <input type="checkbox" name="window-always-on-top" id="window-always-on-top"
-                    class="sound-interface-click">
+                    class="audio-interface-click">
                 </setting-item>
                 <setting-item>
                   <label for="window-fullscreen">Fullscreen</label>
                   <input type="checkbox" name="window-fullscreen" id="window-fullscreen"
-                    class="sound-interface-click">
+                    class="audio-interface-click">
                 </setting-item>
               </setting-category>
 
@@ -77,11 +77,13 @@
                 <h3>Port Scanner</h3>
                 <hr>
                 <setting-item>
-                  <label for="port-scanner-interval" id="port-scanner-interval-label">
-                  Interval
+                  <label for="port-scanner-interval-slider">
+                  Interval <span id="port-scanner-interval-label"></span>
                   </label>
-                  <input type="range" min="500" max="10000" step="100" name="port-scanner-interval" id="port-scanner-interval"
-                    class="sound-interface-click">
+                  <input type="range" min="500" max="10000" step="500"
+                    name="port-scanner-interval-slider"
+                    id="port-scanner-interval-slider"
+                    class="audio-interface-click">
                 </setting-item>
               </setting-category>
 
