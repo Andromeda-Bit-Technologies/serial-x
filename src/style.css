@@ -57,6 +57,10 @@ label {
   color: var(--frg-0);
 }
 
+input {
+  outline: none;
+}
+
 .container {
   width: 100%;
   height: 100%;
