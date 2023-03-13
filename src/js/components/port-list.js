@@ -5,10 +5,19 @@ export class PortList extends HTMLElement {
 		this.style.display = 'flex';
 		this.style.flexDirection = 'row';
 		this.style.justifyContent = 'space-evenly';
+		this.data = undefined;
 		document.getElementById('port-scanner').addEventListener('port-scan-done', function(event) {
-			console.log(event.detail);
-			document.getElementById('port-list').textContent = 'HelloWorld';
+			document.getElementById('port-list').render(event.detail);
 		});
+	}
+
+	render(data) {
+		if (data !== this.data) {
+			this.data = data;
+			for (let port of data) {
+				console.log(port.name);
+			}
+		}
 	}
 }
 // export class PortListItem extends HTMLElement {
