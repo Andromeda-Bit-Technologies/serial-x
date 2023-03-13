@@ -1,6 +1,6 @@
 [package]
 name = "serial-x"
-version = "0.2.0"
+version = "0.2.1"
 description = "Serial port explorer, logger, decoder, and more"
 authors = ["josiphaboic@gmail.com"]
 license = ""
