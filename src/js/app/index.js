@@ -1,17 +1,9 @@
 import { appWindow } from '@tauri-apps/api/window';
 
 
-// export class AppEventTarget extends EventTarget {
-// 	constructor() {
-// 		super();
-// 	}
-// }
-export const DEFAULTS = {
-	'audio-volume': 0.5,
-}
-
 
 export const App = {
+	debug: true,
 	saveState: function(key, value) {
 		localStorage.setItem(key, value);
 	},
@@ -68,12 +60,12 @@ export const App = {
 				App.settings.audio.enable.checked = false;
 			}
 			// set the interface volume slider to saved value
-			App.settings.audio.volume.value = Number(App.loadState('audio-volume')) || DEFAULTS['audio-volume'];
+			App.settings.audio.volume.value = Number(App.loadState('audio-volume')) || 0.5;
 			App.audio.setVolume(App.settings.audio.volume.value);
 
 			// setting audio volume
 			App.settings.audio.enable.addEventListener('change', function (event) {
-				let interfaceVolume = App.loadState('audio-volume') || DEFAULTS['audio-volume'];
+				let interfaceVolume = App.loadState('audio-volume') || 0.5;
 				event.target.checked ? App.audio.setVolume(interfaceVolume) : App.audio.setVolume(0);
 				App.saveState('interface-audio-enabled', event.target.checked ? true : false);
 			});
@@ -111,22 +103,19 @@ export const App = {
 		}
 	},
 	container: document.getElementById('roll-container'),
+	page: {
+		goTo: (name) => App.container.goToPage(name),
+	},
 	port: {
 		scanner: document.getElementById('port-scanner'),
 		scannerIntervalLabel: document.getElementById('port-scanner-interval-label'),
 		scannerIntervalSlider: document.getElementById('port-scanner-interval-slider'),
-		infoTableItems: () => Array.from(document.getElementsByClassName('port-info')),
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
 	},
 	init: function () {
 		App.audio.init();
 		App.settings.init();
+		if (App.debug === true) { window.app = this; }
 	}
 }
-
-// tableRow.onclick = function (event) {
-// 	document.getElementById(event.target.getAttribute('ref-to-port')).scrollIntoView();
-// }
-
-// App.port.createPortPage(port.name.toLowerCase());

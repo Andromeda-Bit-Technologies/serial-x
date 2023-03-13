@@ -77,32 +77,11 @@ roll-container {
 
 roll-page {
   background-color: var(--bkg-0);
-  /* background: linear-gradient(to bottom, var(--bkg-0), 99%, var(--bkg-2)); */
 }
 
 roll-page h1 {
   text-align: center;
 }
-
-/* x-sidebar {
-  position: absolute;
-  top: 15vh;
-  left: 1vw;
-  width: 14vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  padding: var(--medium);
-  user-select: none;
-}
-x-sidebar[closed="false"] {
-  animation: "fade-out" 0.05s ease-in forwards;
-}
-x-sidebar[closed="true"] {
-  animation: "fade-in" 0.1s ease-out forwards;
-} */
 
 x-toggle.settings-toggle {
   position: absolute;
@@ -136,7 +115,7 @@ x-toggle[closed="true"].settings-toggle p {
   z-index: 1;
   display: flex;
   justify-content: center;
-  background-color: var(--bkg-2);
+  background-color: var(--bkg-0);
   overflow: hidden;
   box-shadow: 0 0 var(--xx-small) var(--frg-1-tr);
 }

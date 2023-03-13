@@ -18,10 +18,6 @@ export class PortScanner extends HTMLElement {
 		}, Number(this.getAttribute('scan-interval')) || 3000);
 	}
 
-	connectedCallback() {
-		this.intervalID = this.startScan();
-	}
-
 	static get observedAttributes() {
 		return ['scan-interval',]
 	}

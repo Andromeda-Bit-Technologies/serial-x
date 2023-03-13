@@ -18,7 +18,7 @@
 
       <roll-container allow="up-down" id="roll-container">
 
-        <roll-page page="settings">
+        <roll-page name="settings">
 
           <x-toggle target="settings" class="settings-toggle audio-interface-click" closed="false">
             <p>Settings</p>
@@ -31,6 +31,7 @@
               <setting-category>
                 <h3>Audio</h3>
                 <hr>
+
                 <setting-item>
                   <label for="enable-audio">Enable audio</label>
                   <input type="checkbox" checked id="enable-audio" name="enable-audio" class="audio-interface-click">
@@ -41,8 +42,9 @@
                   <input type="range" min="0" max="1" step="0.1" id="audio-volume" name="audio-volume"
                     class="audio-interface-click">
                 </setting-item>
-              </setting-category>
 
+              </setting-category>
+              
               <setting-category>
                 <h3>Theme</h3>
                 <hr>
@@ -108,15 +110,7 @@
 
   </body>
 
-  <script type="module" src="./js/components/index.js"></script>
-  <!-- <script type="module" src="./js/components/page-roll.js"></script>
-  <script type="module" src="./js/components/overlay.js"></script>
-  <script type="module" src="./js/components/toggle.js"></script>
-  <script type="module" src="./js/components/settings.js"></script>
-  <script type="module" src="./js/components/theme-switch.js"></script>
-  <script type="module" src="./js/components/port-scanner.js"></script>
-  <script type="module" src="./js/components/port-table.js"></script>
-  <script type="module" src="./js/components/port-view.js"></script> -->
+  <script type="module" src="./js/components/index.js" defer async></script>
   <script type="module" src="./main.js"></script>
   
 </html>

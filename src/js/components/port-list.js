@@ -7,7 +7,7 @@ export class PortList extends HTMLElement {
 		this.style.justifyContent = 'space-evenly';
 		this.data = undefined;
 		document.getElementById('port-scanner').addEventListener('port-scan-done', function(event) {
-			document.getElementById('port-list').render(event.detail);
+			document.getElementById('port-list').render(JSON.parse(event.detail));
 		});
 	}
 
@@ -15,7 +15,7 @@ export class PortList extends HTMLElement {
 		if (data !== this.data) {
 			this.data = data;
 			for (let port of data) {
-				console.log(port.name);
+				console.log(port);
 			}
 		}
 	}
