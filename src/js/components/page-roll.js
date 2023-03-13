@@ -2,6 +2,7 @@ class RollPageContainer extends HTMLElement{
 	constructor() {
 		super();
 		this.setAttribute('class', 'roll-page-container');
+		this.setAttribute('id', 'roll-page-controller');
 		this.currentPageIndex = 0;
 		this.allow = this.getAttribute('allow');
 		this.behavior = this.getAttribute('behavior') || 'smooth';
@@ -16,7 +17,15 @@ class RollPageContainer extends HTMLElement{
 		return this.getElementsByTagName('roll-page').length;
 	}
 
-	goToPage() {
+	gotToPage(name) {
+		let pages = Array.from(document.getElementsByClassName('roll-page'));
+		let page = pages.find(page => name === page.getAttribute('name'));
+		this.currentPageIndex = pages.indexOf(page);
+		console.log([pages, page, this.currentPageIndex]);
+		this.nextPage();
+	}
+
+	nextPage() {
 		if (this.allow == 'down') {
 			if (this.currentPageIndex < 0 || this.currentPageIndex > this.numberOfPages()) {
 				this.currentPageIndex = 0;
@@ -49,7 +58,7 @@ class RollPageContainer extends HTMLElement{
 			this.currentPageIndex -= 1;
 		}
 
-		this.goToPage(this.currentPageIndex);
+		this.nextPage(this.currentPageIndex);
 	}
 
 	handleKey(event) {
@@ -66,7 +75,7 @@ class RollPageContainer extends HTMLElement{
 			this.currentPageIndex -= 1;
 		}
 
-		this.goToPage(this.currentPageIndex);
+		this.nextPage(this.currentPageIndex);
 
 	}
 
@@ -84,7 +93,7 @@ class RollPageContainer extends HTMLElement{
 		// 	pageNumber = 0;
 		// }
 
-		// goToPage(pageNumber);
+		// nextPage(pageNumber);
 	}
 }
 
@@ -102,12 +111,5 @@ class RollPage extends HTMLElement {
 }
 
 
-(function init() {
-// 	// const RollPageContainer = new RollPageContainer();
-// 	window.addEventListener('wheel', RollPageContainer.handleWheel.bind(RollPageContainer), { passive: false });
-// 	window.addEventListener('keydown', RollPageContainer.handleKey.bind(RollPageContainer)); //  ,{ passive: false }
-// 	// window.addEventListener('touchend', handlers.touchHandler); // , { passive: false }
-	window.customElements.define('roll-container', RollPageContainer);
-	window.customElements.define('roll-page', RollPage);
-})();
-
+window.customElements.define('roll-container', RollPageContainer);
+window.customElements.define('roll-page', RollPage);

@@ -15,7 +15,7 @@
 	--green: #09fb09;
 	--blue: #09bffb;
 
-	--bkg-image: none;
+	--bkg-image: url("/src/assets/graphics/svg/bkg-violet.svg");
 
 	--xx-small: 0.1rem;
 	--x-small: 0.25rem;

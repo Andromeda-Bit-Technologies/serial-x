@@ -79,6 +79,8 @@ roll-container {
 roll-page {
   background-color: var(--bkg-0);
   background-image: var(--bkg-image);
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -176,6 +178,9 @@ x-toggle[closed="true"].settings-toggle p {
   padding: var(--medium);
   color: var(--red);
 }
+#port-scanner-interval-label {
+  color: var(--frg-0);
+}
 
 
 port-table {
@@ -183,7 +188,7 @@ port-table {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 90%;
+  height: 100%;
   padding: 0;
 }
 port-table table {
@@ -192,6 +197,7 @@ port-table table {
 }
 port-table table th {
   color: var(--frg-1);
+  background-color: var(--bkg-0-tr);
   text-decoration: none;
   font-size: var(--large);
   font-weight: normal;
@@ -203,7 +209,7 @@ port-table table tr {
   background: var(--bkg-0);
 }
 port-table table tr:nth-child(n+1) {
-  background: var(--bkg-1-tr);
+  background: var(--bkg-1);
 }
 port-table table td {
   color: var(--frg-0);

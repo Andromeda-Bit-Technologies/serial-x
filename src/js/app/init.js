@@ -1,6 +1,16 @@
 import { appWindow } from '@tauri-apps/api/window';
 
 
+// export class AppEventTarget extends EventTarget {
+// 	constructor() {
+// 		super();
+// 	}
+// }
+export const DEFAULTS = {
+	'audio-volume': 0.5,
+}
+
+
 export const App = {
 	saveState: function(key, value) {
 		localStorage.setItem(key, value);
@@ -26,7 +36,7 @@ export const App = {
 			App.saveState('interface-volume', volume);
 		},
 		getVolume: function() {
-			return App.loadState('interface-volume');
+			return App.loadState('interface-volume') || DEFAULTS['audio-volume'];
 		},
 		init: function() {
 			App.audio.elements.map((element) => {
@@ -58,12 +68,12 @@ export const App = {
 				App.settings.audio.enable.checked = false;
 			}
 			// set the interface volume slider to saved value
-			App.settings.audio.volume.value = Number(App.loadState('audio-volume')) || 0.5;
+			App.settings.audio.volume.value = Number(App.loadState('audio-volume')) || DEFAULTS['audio-volume'];
 			App.audio.setVolume(App.settings.audio.volume.value);
 
 			// setting audio volume
 			App.settings.audio.enable.addEventListener('change', function (event) {
-				let interfaceVolume = App.loadState('audio-volume');
+				let interfaceVolume = App.loadState('audio-volume') || DEFAULTS['audio-volume'];
 				event.target.checked ? App.audio.setVolume(interfaceVolume) : App.audio.setVolume(0);
 				App.saveState('interface-audio-enabled', event.target.checked ? true : false);
 			});
@@ -90,18 +100,22 @@ export const App = {
 			});
 
 			// port scanner
+			App.port.scannerIntervalSlider.value = App.loadState('scanner-interval') || 1000;
 			App.port.scannerIntervalLabel.textContent = `${App.port.scannerIntervalSlider.value} ms`;
 
 			App.port.scannerIntervalSlider.addEventListener('change', function (event) {
 				App.port.setScanInterval(Number(event.target.value));
+				App.saveState('scanner-interval', event.target.value);
 				App.port.scannerIntervalLabel.textContent = `${event.target.value} ms`;
 			});
 		}
 	},
+	container: document.getElementById('roll-container'),
 	port: {
 		scanner: document.getElementById('port-scanner'),
 		scannerIntervalLabel: document.getElementById('port-scanner-interval-label'),
 		scannerIntervalSlider: document.getElementById('port-scanner-interval-slider'),
+		infoTableItems: () => Array.from(document.getElementsByClassName('port-info')),
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
 	},
@@ -111,3 +125,8 @@ export const App = {
 	}
 }
 
+// tableRow.onclick = function (event) {
+// 	document.getElementById(event.target.getAttribute('ref-to-port')).scrollIntoView();
+// }
+
+// App.port.createPortPage(port.name.toLowerCase());

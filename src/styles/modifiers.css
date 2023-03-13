@@ -2,6 +2,15 @@
 .is-blue {
 	color: var(--blue);
 }
+.is-red {
+	color: var(--red);
+}
+.is-green {
+	color: var(--green);
+}
+.is-yellow {
+	color: var(--yellow);
+}
 .is-frg-0 {
 	color: var(--frg-0);
 }
