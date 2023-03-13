@@ -1,13 +1,8 @@
 class RollPageContainer extends HTMLElement{
 	constructor() {
 		super();
-		this.setAttribute('class', 'roll-page-container');
-		this.setAttribute('id', 'roll-page-controller');
 		this.currentPageIndex = 0;
 		this.allow = this.getAttribute('allow');
-		this.behavior = this.getAttribute('behavior') || 'smooth';
-		this.block = this.getAttribute('block') || 'center';
-		this.inline = this.getAttribute('inline') || 'center';
 
 		window.addEventListener('wheel', this.handleWheel.bind(this), { passive: false });
 		window.addEventListener('keydown', this.handleKey.bind(this)); //  ,{ passive: false }
@@ -17,15 +12,19 @@ class RollPageContainer extends HTMLElement{
 		return this.getElementsByTagName('roll-page').length;
 	}
 
-	gotToPage(name) {
-		let pages = Array.from(document.getElementsByClassName('roll-page'));
+	goTo(name) {
+		let pages = Array.from(document.getElementsByTagName('roll-page'));
 		let page = pages.find(page => name === page.getAttribute('name'));
-		this.currentPageIndex = pages.indexOf(page);
-		console.log([pages, page, this.currentPageIndex]);
-		this.nextPage();
+		let index = pages.indexOf(page);
+		this.currentPageIndex = index;
+		console.log(`
+		page: ${page}
+		index: ${index}
+		`);
+		this.switchPage();
 	}
 
-	nextPage() {
+	switchPage() {
 		if (this.allow == 'down') {
 			if (this.currentPageIndex < 0 || this.currentPageIndex > this.numberOfPages()) {
 				this.currentPageIndex = 0;
@@ -41,9 +40,9 @@ class RollPageContainer extends HTMLElement{
 		}
 		try {
 			this.getElementsByTagName('roll-page')[this.currentPageIndex].scrollIntoView({
-				behavior: this.behavior,
-				block: this.block,
-				inline: this.inline,
+				behavior: 'smooth',
+				block: 'center',
+				inline: 'center',
 			});
 		} catch(error) {
 			console.error(error);
@@ -58,7 +57,7 @@ class RollPageContainer extends HTMLElement{
 			this.currentPageIndex -= 1;
 		}
 
-		this.nextPage(this.currentPageIndex);
+		this.switchPage(this.currentPageIndex);
 	}
 
 	handleKey(event) {
@@ -75,7 +74,7 @@ class RollPageContainer extends HTMLElement{
 			this.currentPageIndex -= 1;
 		}
 
-		this.nextPage(this.currentPageIndex);
+		this.switchPage(this.currentPageIndex);
 
 	}
 
@@ -93,7 +92,7 @@ class RollPageContainer extends HTMLElement{
 		// 	pageNumber = 0;
 		// }
 
-		// nextPage(pageNumber);
+		// switchPage(pageNumber);
 	}
 }
 

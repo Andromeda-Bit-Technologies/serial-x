@@ -3,7 +3,6 @@ import { appWindow } from '@tauri-apps/api/window';
 
 
 export const App = {
-	debug: true,
 	saveState: function(key, value) {
 		localStorage.setItem(key, value);
 	},
@@ -102,9 +101,9 @@ export const App = {
 			});
 		}
 	},
-	container: document.getElementById('roll-container'),
+	container: document.getElementById('root'),
 	page: {
-		goTo: (name) => App.container.goToPage(name),
+		goTo: (name) => App.container.goTo(name),
 	},
 	port: {
 		scanner: document.getElementById('port-scanner'),
@@ -113,9 +112,11 @@ export const App = {
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
 	},
+	// levels options are: trace, info, warning, error
+	log: (level, message) => undefined,
+	debug: true,
 	init: function () {
 		App.audio.init();
 		App.settings.init();
-		if (App.debug === true) { window.app = this; }
 	}
 }
