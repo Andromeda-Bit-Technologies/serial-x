@@ -4,7 +4,11 @@
     "parcel": "^2.8.3"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.2.0"
+    "@tauri-apps/api": "^1.2.0",
+    "d3": "^7.8.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.0",
+    "tsyringe": "^4.7.0"
   },
   "name": "serial-x",
   "description": "Serial Port Explorer, Logger and more.",

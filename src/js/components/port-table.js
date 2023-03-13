@@ -1,3 +1,6 @@
+
+
+
 export class PortTable extends HTMLElement {
 	constructor() {
 		super();
@@ -38,14 +41,15 @@ export class PortTable extends HTMLElement {
 			let tableBody = document.createElement('tbody');
 			for (let port of ports) {
 				let tableRow = document.createElement('tr');
-				tableRow.setAttribute('class', 'port-table-item');
-				tableRow.setAttribute('ref-to', `port-${port.name.toLowerCase()}`);
-				tableRow.onclick = function(event) {
-					document.getElementById(event.target.getAttribute('ref-to')).scrollIntoView();
-				}
+				tableRow.setAttribute('class', 'port-info audio-interface-click');
+				tableRow.setAttribute('ref-to-port', `${port.name.toLowerCase()}`);
+				tableRow.addEventListener('click', (event) => {
+					document.getElementById('roll-container').gotToPage(`${port.name.toLowerCase()}`);
+				});
 
 				let name = document.createElement('td');
 				name.textContent = port.name;
+
 				let type = document.createElement('td');
 				type.textContent = port.type_of;
 				let vid = document.createElement('td');

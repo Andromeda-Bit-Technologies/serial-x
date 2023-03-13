@@ -9,13 +9,23 @@ export class PortScanner extends HTMLElement {
 		this.id = 'port-scanner';
 	}
 
-	connectedCallback() {
-		setInterval(() => {
+	startScan() {
+		return setInterval(() => {
 			invoke('scan_ports').then((data) => {
-				let event = new CustomEvent('port-scan-done', {bubbles: true, detail: data});
+				let event = new CustomEvent('port-scan-done', { bubbles: true, detail: data });
 				this.dispatchEvent(event);
 			});
 		}, Number(this.getAttribute('scan-interval')) || 3000);
+	}
+
+	static get observedAttributes() {
+		return ['scan-interval',]
+	}
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		clearInterval(this.intervalID-1);
+		clearInterval(this.intervalID);
+		this.intervalID = this.startScan();
 	}
 }
 

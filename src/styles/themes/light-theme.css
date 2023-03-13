@@ -1,19 +1,21 @@
 .light-theme {
-	--bkg-0: #FFFFFF;
-	--bkg-0-tr: #FFFFFF55;
-	--bkg-1: #FAFBF4;
-	--bkg-1-tr: #FAFBF455;
-	--bkg-2: #dfecff;
-	--bkg-2-tr: #D7DEAB55;
-	--frg-0: #3d6fb9;
-	--frg-0-tr: #3d6fb9aa;
-	--frg-1: #3db899;
-	--frg-1-tr: #3db89955;
+	--bkg-0: #ffffff;
+	--bkg-0-tr: #ffffff55;
+	--bkg-1: #d4ecff;
+	--bkg-1-tr: #d4ecff55;
+	--bkg-2: #b7e1ff;
+	--bkg-2-tr: #b7e1ff55;
+	--frg-0: #000000;
+	--frg-0-tr: #00000055;
+	--frg-1: #005799;
+	--frg-1-tr: #00579955;
 	--red: #c23d3d;
 	--yellow: #c2c23d;
 	--orange: #c2803d;
 	--green: #5ec23d;
 	--blue: #3da1c2;
+
+	--bkg-image: url("/src/assets/graphics/svg/bkg-light.svg");
 
 	--xx-small: 0.1rem;
 	--x-small: 0.25rem;

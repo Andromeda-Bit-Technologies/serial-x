@@ -36,13 +36,16 @@ h1, h2, h3, h4 {
 button {
   width: 10vw;
   padding: var(--small) var(--x-small);
-  background: var(--bkg-2);
+  color: var(--frg-0);
+  background: var(--bkg-1);
   border: none;
+  border-radius: var(--x-small);
   font-size: var(--medium);
 }
 
 button:hover {
-  color: var(--frg-1);
+  background: var(--frg-1);
+  color: var(--bkg-0);
 }
 
 button:active {
@@ -51,6 +54,10 @@ button:active {
 
 label {
   color: var(--frg-0);
+}
+
+input {
+  outline: none;
 }
 
 .container {
@@ -69,32 +76,12 @@ roll-container {
 }
 
 roll-page {
-  background: var(--bkg-0);
+  background-color: var(--bkg-0);
 }
 
 roll-page h1 {
   text-align: center;
 }
-
-/* x-sidebar {
-  position: absolute;
-  top: 15vh;
-  left: 1vw;
-  width: 14vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  padding: var(--medium);
-  user-select: none;
-}
-x-sidebar[closed="false"] {
-  animation: "fade-out" 0.05s ease-in forwards;
-}
-x-sidebar[closed="true"] {
-  animation: "fade-in" 0.1s ease-out forwards;
-} */
 
 x-toggle.settings-toggle {
   position: absolute;
@@ -122,13 +109,12 @@ x-toggle[closed="true"].settings-toggle p {
 
 #settings {
   position: absolute;
-  width: 80vw;
+  width: 60vw;
   top: 5vw;
-  left: 10vw;
+  left: 20vw;
   z-index: 1;
   display: flex;
-  justify-content: flex-start;
-  padding: var(--large);
+  justify-content: center;
   background-color: var(--bkg-0);
   overflow: hidden;
   box-shadow: 0 0 var(--xx-small) var(--frg-1-tr);
@@ -137,19 +123,17 @@ x-toggle[closed="true"].settings-toggle p {
   opacity: 0;
   outline: none;
 }
-
 #settings settings-panel {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: center;
   height: 100%;
 }
 #settings settings-panel setting-category {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  padding: var(--small);
+  padding: var(--large);
 }
 #settings settings-panel setting-category h3 {
   color: var(--frg-1);
@@ -164,26 +148,31 @@ x-toggle[closed="true"].settings-toggle p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--medium);
+  min-width: 25vw;
+  min-height: 3vh;
+  padding: var(--medium);
   color: var(--red);
 }
+#port-scanner-interval-label {
+  color: var(--frg-0);
+}
+
 
 port-table {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 90%;
+  height: 100%;
   padding: 0;
 }
-
 port-table table {
   width: 80vw;
   outline: 1px solid var(--bkg-1);
 }
-
 port-table table th {
   color: var(--frg-1);
+  background-color: var(--bkg-0-tr);
   text-decoration: none;
   font-size: var(--large);
   font-weight: normal;
@@ -195,7 +184,7 @@ port-table table tr {
   background: var(--bkg-0);
 }
 port-table table tr:nth-child(n+1) {
-  background: var(--bkg-1-tr);
+  background: var(--bkg-1);
 }
 port-table table td {
   color: var(--frg-0);
@@ -205,7 +194,7 @@ port-table table td {
 }
 
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1000px){
   h1 {
     font-size: var(--small);
   }
@@ -222,19 +211,29 @@ port-table table td {
     font-size: var(--x-large);
   }
 
+  x-toggle.settings-toggle {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+  }
+
   #settings {
-    top: 10vw;
+    width: 100%;
+    top: 12vw;
+    left: 0;
     overflow-x: hidden;
-    overflow-y: auto;
+    box-shadow: none;
   }
 
   #settings settings-panel {
     display: flex;
     flex-direction: column;
+    padding: 0;
   }
 
   #settings settings-panel setting-category {
     width: 100%;
+    padding: var(--medium);
   }
 
   #settings settings-panel setting-category hr {
@@ -242,5 +241,10 @@ port-table table td {
     border: none;
     height: 1px;
   }
+
+  #settings settings-panel setting-category setting-item {
+    margin-bottom: var(--xx-small);
+  }
+
 }
 @media screen and (min-width: 1200px){}
