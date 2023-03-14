@@ -103,7 +103,40 @@ export const App = {
 	},
 	container: document.getElementById('root'),
 	page: {
+		init: () => {
+			App.port.scanner.addEventListener('port-scan-done',
+			(event) => {
+				let ports = JSON.parse(event.detail);
+				for (let port of ports) {
+					let rollPage = document.createElement('roll-page');
+					rollPage.setAttribute('name', port.name);
+
+					let portView = document.createElement('port-view');
+					portView.setAttribute('port-info', JSON.stringify(port));
+
+					rollPage.appendChild(portView);
+					App.page.add(rollPage);
+				}
+			});
+		},
 		goTo: (name) => App.container.goTo(name),
+		add: (page) => {
+			let pageName = page.getAttribute('name');
+			if (App.page.nameList().find((name) => name === pageName)) {
+				return;
+			} else {
+				App.container.appendChild(page);
+			}
+		},
+		remove: (name) => {
+			Array.from(App.container.children)
+			.find((page) => page.getAttribute('name') === name)
+			.remove();
+		},
+		nameList: () => {
+			return Array.from(App.container.children)
+				.map((page) => page.getAttribute('name'))
+		}
 	},
 	port: {
 		scanner: document.getElementById('port-scanner'),
@@ -112,11 +145,10 @@ export const App = {
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
 	},
-	// levels options are: trace, info, warning, error
 	log: (level, message) => undefined,
-	debug: true,
 	init: function () {
 		App.audio.init();
 		App.settings.init();
+		App.page.init();
 	}
 }

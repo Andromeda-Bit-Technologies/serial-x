@@ -17,10 +17,6 @@ class RollPageContainer extends HTMLElement{
 		let page = pages.find(page => name === page.getAttribute('name'));
 		let index = pages.indexOf(page);
 		this.currentPageIndex = index;
-		console.log(`
-		page: ${page}
-		index: ${index}
-		`);
 		this.switchPage();
 	}
 

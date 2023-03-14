@@ -1,4 +1,4 @@
-
+import { App } from '../app/index';
 
 
 export class PortTable extends HTMLElement {
@@ -42,9 +42,9 @@ export class PortTable extends HTMLElement {
 			for (let port of ports) {
 				let tableRow = document.createElement('tr');
 				tableRow.setAttribute('class', 'port-info audio-interface-click');
-				tableRow.setAttribute('ref-to-port', `${port.name.toLowerCase()}`);
+				tableRow.setAttribute('name', `${port.name}`);
 				tableRow.addEventListener('click', (event) => {
-					document.getElementById('roll-container').gotToPage(`${port.name.toLowerCase()}`);
+					App.page.goTo(`${port.name}`);
 				});
 
 				let name = document.createElement('td');
