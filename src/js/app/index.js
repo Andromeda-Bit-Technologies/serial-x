@@ -102,40 +102,48 @@ export const App = {
 		}
 	},
 	container: document.getElementById('root'),
-	page: {
+	portView: {
 		init: () => {
 			App.port.scanner.addEventListener('port-scan-done',
 			(event) => {
 				let ports = JSON.parse(event.detail);
 				for (let port of ports) {
 					let rollPage = document.createElement('roll-page');
-					rollPage.setAttribute('name', port.name);
-
+					rollPage.setAttribute('port', port.name);
+					
 					let portView = document.createElement('port-view');
 					portView.setAttribute('port-info', JSON.stringify(port));
-
+					portView.setAttribute('port', port.name);
+					
 					rollPage.appendChild(portView);
-					App.page.add(rollPage);
+					App.portView.add(rollPage);
 				}
+				App.portView.clearMissing(ports);
 			});
 		},
 		goTo: (name) => App.container.goTo(name),
-		add: (page) => {
-			let pageName = page.getAttribute('name');
-			if (App.page.nameList().find((name) => name === pageName)) {
+		add: (view) => {
+			let viewForPort = view.getAttribute('port');
+			if (App.portView.list().find((portView) => portView.getAttribute('port') === viewForPort)) {
 				return;
 			} else {
-				App.container.appendChild(page);
+				App.container.appendChild(view);
 			}
 		},
 		remove: (name) => {
-			Array.from(App.container.children)
-			.find((page) => page.getAttribute('name') === name)
+			Array.from(document.getElementsByTagName('roll-page'))
+				.find((container) => container.getAttribute('port') === name)
 			.remove();
 		},
-		nameList: () => {
-			return Array.from(App.container.children)
-				.map((page) => page.getAttribute('name'))
+		list: () => {
+			return Array.from(document.getElementsByTagName('port-view'));
+		},
+		clearMissing: (ports) => {
+			for (let portView of App.portView.list()) {
+				if (!ports.find((port) => port.name === portView.getAttribute('port'))) {
+					App.portView.remove(portView.getAttribute('port'));
+				}
+			}
 		}
 	},
 	port: {
@@ -149,6 +157,6 @@ export const App = {
 	init: function () {
 		App.audio.init();
 		App.settings.init();
-		App.page.init();
+		App.portView.init();
 	}
 }

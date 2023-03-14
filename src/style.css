@@ -209,7 +209,7 @@ port-table table td {
   padding: var(--medium);
   max-width: 320px;
   height: 32px;
-  background: linear-gradient(to right, var(--bkg-1), var(--bkg-2));
+  background: linear-gradient(to right, var(--bkg-0), var(--bkg-1));
 }
 
 .port-option label {
@@ -237,6 +237,7 @@ port-table table td {
   border: none;
 }
 .port-option input {
+  width: 50%;
   font-size: var(--medium);
   background: var(--bkg-1);
   color: var(--frg-0);

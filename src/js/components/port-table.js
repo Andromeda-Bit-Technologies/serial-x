@@ -44,7 +44,7 @@ export class PortTable extends HTMLElement {
 				tableRow.setAttribute('class', 'port-info audio-interface-click');
 				tableRow.setAttribute('name', `${port.name}`);
 				tableRow.addEventListener('click', (event) => {
-					App.page.goTo(`${port.name}`);
+					App.portView.goTo(`${port.name}`);
 				});
 
 				let name = document.createElement('td');
