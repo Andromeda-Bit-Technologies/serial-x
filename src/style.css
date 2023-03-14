@@ -54,10 +54,20 @@ button:active {
 
 label {
   color: var(--frg-0);
+  font-size: var(--medium);
 }
 
 input {
   outline: none;
+  font-size: var(--medium);
+}
+
+select {
+  background: var(--bkg-0);
+  color: var(--frg-0);
+  outline: none;
+  border: none;
+  font-size: var(--medium);
 }
 
 .container {
@@ -157,7 +167,6 @@ x-toggle[closed="true"].settings-toggle p {
   color: var(--frg-0);
 }
 
-
 port-table {
   display: flex;
   justify-content: center;
@@ -193,6 +202,56 @@ port-table table td {
   font-size: var(--large);
 }
 
+.port-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--medium);
+  max-width: 320px;
+  height: 32px;
+  background: linear-gradient(to right, var(--bkg-0), var(--bkg-1));
+}
+
+.port-option label {
+  width: 50%;
+}
+
+.port-option select {
+  background: transparent;
+  color: var(--frg-0);
+  font-size: var(--medium);
+  outline: none;
+  border: none;
+  width: 50%;
+}
+
+.port-option select.is-hidden {
+  display: none;
+}
+
+.port-option select option {
+  background: var(--bkg-0);
+  color: var(--frg-0);
+  font-size: var(--medium);
+  outline: none;
+  border: none;
+}
+.port-option input {
+  width: 50%;
+  font-size: var(--medium);
+  background: var(--bkg-1);
+  color: var(--frg-0);
+  border: none;
+}
+.port-option input:focus {
+  background: var(--bkg-2);
+}
+.port-option input.is-hidden {
+  display: none;
+}
+.port-option select.is-hidden {
+  display: none;
+}
 
 @media screen and (max-width: 1000px){
   h1 {

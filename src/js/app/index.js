@@ -102,8 +102,49 @@ export const App = {
 		}
 	},
 	container: document.getElementById('root'),
-	page: {
+	portView: {
+		init: () => {
+			App.port.scanner.addEventListener('port-scan-done',
+			(event) => {
+				let ports = JSON.parse(event.detail);
+				for (let port of ports) {
+					let rollPage = document.createElement('roll-page');
+					rollPage.setAttribute('port', port.name);
+					
+					let portView = document.createElement('port-view');
+					portView.setAttribute('port-info', JSON.stringify(port));
+					portView.setAttribute('port', port.name);
+					
+					rollPage.appendChild(portView);
+					App.portView.add(rollPage);
+				}
+				App.portView.clearMissing(ports);
+			});
+		},
 		goTo: (name) => App.container.goTo(name),
+		add: (view) => {
+			let viewForPort = view.getAttribute('port');
+			if (App.portView.list().find((portView) => portView.getAttribute('port') === viewForPort)) {
+				return;
+			} else {
+				App.container.appendChild(view);
+			}
+		},
+		remove: (name) => {
+			Array.from(document.getElementsByTagName('roll-page'))
+				.find((container) => container.getAttribute('port') === name)
+			.remove();
+		},
+		list: () => {
+			return Array.from(document.getElementsByTagName('port-view'));
+		},
+		clearMissing: (ports) => {
+			for (let portView of App.portView.list()) {
+				if (!ports.find((port) => port.name === portView.getAttribute('port'))) {
+					App.portView.remove(portView.getAttribute('port'));
+				}
+			}
+		}
 	},
 	port: {
 		scanner: document.getElementById('port-scanner'),
@@ -112,11 +153,10 @@ export const App = {
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
 	},
-	// levels options are: trace, info, warning, error
 	log: (level, message) => undefined,
-	debug: true,
 	init: function () {
 		App.audio.init();
 		App.settings.init();
+		App.portView.init();
 	}
 }
