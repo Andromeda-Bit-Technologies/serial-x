@@ -1,4 +1,3 @@
-
 export class PortOptions extends HTMLElement {
 	constructor() {
 		super();
