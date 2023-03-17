@@ -1,3 +1,7 @@
+import { App } from '../../app';
+
+
+
 export class PortOption extends HTMLElement {
 	// base class for port option elements
 	constructor() {
@@ -9,14 +13,21 @@ export class PortOption extends HTMLElement {
 		return this.parentNode.getAttribute('port');
 	}
 
+	playInterfaceSound() {
+		App.audio.play('interface-click');
+	}
+	
 	connectedCallback() {
 		this.setAttribute('class', 'port-option audio-interface-click');
 		for (let child of Array.from(this.children)) {
-			console.log(child);
-			console.log();
 			child.setAttribute('port', this.ownerPort);
 		}
+		this.preRender();
 		this.render();
+	}
+	
+	preRender() {
+		this.onclick = this.playInterfaceSound;
 	}
 	
 }

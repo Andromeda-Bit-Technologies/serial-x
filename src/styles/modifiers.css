@@ -25,6 +25,15 @@
 .is-flex-end {
 	justify-self: flex-end;
 }
+.is-column {
+	display: flex;
+	flex-direction: column;
+}
+.is-row {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
 
 .is-centered-all {
 	text-align: center;

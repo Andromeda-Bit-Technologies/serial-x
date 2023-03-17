@@ -17,7 +17,7 @@ export class ParityType extends PortOption {
 		label.textContent = 'Parity';
 
 		let selectParity = document.createElement('select');
-		// selectParity.setAttribute('id', `${this.ownerPort}-parity-select`);
+		selectParity.setAttribute('id', `${this.ownerPort}-parity-select`);
 		selectParity.setAttribute('name', `${this.ownerPort}-parity-select`);
 
 		for (let parity of this.parityOptions) {
