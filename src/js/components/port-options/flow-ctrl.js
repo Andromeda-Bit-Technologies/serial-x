@@ -18,7 +18,7 @@ export class FlowCTRL extends PortOption {
 		return checkbox;
 	}
 
-	onCTSChange() {
+	_onCTSChange() {
 		return (event) => {
 			if (event.target.checked === true) {
 				this.XONCheckbox.checked = false;
@@ -26,7 +26,7 @@ export class FlowCTRL extends PortOption {
 		}
 	}
 	
-	onDTRChange() {
+	_onDTRChange() {
 		return (event) => {
 			if (event.target.checked === true) {
 				this.XONCheckbox.checked = false;
@@ -34,7 +34,7 @@ export class FlowCTRL extends PortOption {
 		}
 	}
 	
-	onXONChange() {
+	_onXONChange() {
 		return (event) => {
 			if (event.target.checked === true) {
 				this.CTSCheckbox.checked = false;
@@ -72,9 +72,9 @@ export class FlowCTRL extends PortOption {
 		this.appendChild(fieldset);
 
 		
-		this.CTSCheckbox.onchange =  this.onCTSChange();
-		this.DTRCheckbox.onchange =  this.onDTRChange();
-		this.XONCheckbox.onchange = this.onXONChange();
+		this.CTSCheckbox.onchange =  this._onCTSChange();
+		this.DTRCheckbox.onchange =  this._onDTRChange();
+		this.XONCheckbox.onchange = this._onXONChange();
 		
 	}
 }
