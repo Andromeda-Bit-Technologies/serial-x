@@ -15,7 +15,7 @@ export class PortScanner extends HTMLElement {
 				let event = new CustomEvent('port-scan-done', { bubbles: true, detail: data });
 				this.dispatchEvent(event);
 			});
-		}, Number(this.getAttribute('scan-interval')) || 3000);
+		}, Number(this.getAttribute('scan-interval')) || 1000);
 	}
 
 	static get observedAttributes() {

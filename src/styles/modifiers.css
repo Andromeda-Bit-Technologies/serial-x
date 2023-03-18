@@ -1,3 +1,12 @@
+/* size */
+.w-100 {
+	width: 100%;
+}
+.w-15 {
+	width: 15%;
+}
+
+
 /* colors */
 .is-blue {
 	color: var(--blue);
@@ -25,6 +34,9 @@
 .is-flex-end {
 	justify-self: flex-end;
 }
+.is-flex-start {
+	justify-self: flex-start;
+}
 .is-column {
 	display: flex;
 	flex-direction: column;
@@ -45,7 +57,15 @@
 .is-not-selectable {
 	user-select: none;
 }
-
+.is-text-selectable {
+	user-select: text;
+}
+.is-all-selectable {
+	user-select: all;
+}
 .is-inline {
 	display: inline;
+}
+.is-hidden {
+	display: none;
 }

@@ -20,12 +20,16 @@ export class PortView extends HTMLElement {
 		let paritySelect = document.createElement('parity-type');
 		let stopBitsSelect = document.createElement('stop-bits');
 		let flowCTRL = document.createElement('flow-ctrl');
+		let softwareFlow = document.createElement('software-supported-flow-control');
+		let initialLineState = document.createElement('initial-line-state');
 
 		portOptions.appendChild(baudSelect);
 		portOptions.appendChild(dataBitsSelect);
 		portOptions.appendChild(paritySelect);
 		portOptions.appendChild(stopBitsSelect);
 		portOptions.appendChild(flowCTRL);
+		portOptions.appendChild(softwareFlow);
+		portOptions.appendChild(initialLineState);
 		
 		this.appendChild(portOptions);
 	}

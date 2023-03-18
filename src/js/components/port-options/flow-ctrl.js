@@ -5,77 +5,70 @@ import { PortOption } from './port-option';
 export class FlowCTRL extends PortOption {
 	constructor() {
 		super();
-		this.CTSCheckbox = undefined;
-		this.DTRCheckbox = undefined;
-		this.XONCheckbox = undefined;
 	}
 
-	_createCheckbox(option) {
-		let checkbox = document.createElement('input');
-		checkbox.setAttribute('type', 'checkbox');
+	_createCheckbox(label, option, state) {
+		let checkbox = document.createElement('on-off');
+		checkbox.setAttribute('label', label);
 		checkbox.setAttribute('id', `${this.ownerPort}-${option}`);
+		checkbox.setAttribute('on', state);
 		checkbox.setAttribute('port', this.ownerPort);
 		return checkbox;
 	}
 
-	_onCTSChange() {
+	onClick(cts, dtr, xon) {
 		return (event) => {
-			if (event.target.checked === true) {
-				this.XONCheckbox.checked = false;
+			let targetName = event.target.getAttribute('label');
+			let state = event.target.getAttribute('on');
+
+			console.log(targetName);
+			console.log(state);
+
+			if (targetName === 'XON') {
+				if (state === 'true') {
+					xon.on();
+				} else {
+					cts.off();
+					dtr.off();
+					xon.off();
+				}
 			}
-		}
-	}
-	
-	_onDTRChange() {
-		return (event) => {
-			if (event.target.checked === true) {
-				this.XONCheckbox.checked = false;
+			if (targetName === 'CTS') {
+				if (state === 'true') {
+					cts.on();
+				} else {
+					xon.off();
+					cts.off();
+				}
 			}
-		}
-	}
-	
-	_onXONChange() {
-		return (event) => {
-			if (event.target.checked === true) {
-				this.CTSCheckbox.checked = false;
-				this.DTRCheckbox.checked = false;
+			if (targetName === 'DTR') {
+				if (state === 'false') {
+					dtr.off();
+					xon.off();
+				} else {
+					dtr.on();
+				}
 			}
+			
 		}
 	}
 
 	render() {
 		let label = document.createElement('label');
-		label.textContent = 'Flow';
+		label.textContent = 'Flow Control';
 
+		let CTSCheckbox = this._createCheckbox('CTS', 'cts', 'true');
+		let DTRCheckbox = this._createCheckbox('DTR', 'dtr', 'true');
+		let XONCheckbox = this._createCheckbox('XON', 'xon', 'false');
 
-		let fieldset = document.createElement('fieldset');
-		fieldset.setAttribute('class', 'is-row');
+		CTSCheckbox.addEventListener('click', this.onClick(CTSCheckbox, DTRCheckbox, XONCheckbox));
+		DTRCheckbox.addEventListener('click', this.onClick(CTSCheckbox, DTRCheckbox, XONCheckbox));
+		XONCheckbox.addEventListener('click', this.onClick(CTSCheckbox, DTRCheckbox, XONCheckbox));
 
-		let CTSLabel = document.createElement('label');
-		CTSLabel.textContent = 'CTS';
-		let DTRLabel = document.createElement('label');
-		DTRLabel.textContent = 'DTR';
-		let XONLabel = document.createElement('label');
-		XONLabel.textContent = 'XON';
-
-		this.CTSCheckbox = this._createCheckbox('CTS');
-		this.DTRCheckbox = this._createCheckbox('DTR');
-		this.XONCheckbox = this._createCheckbox('XON');
-		
 		this.appendChild(label);
-		fieldset.appendChild(CTSLabel);
-		fieldset.appendChild(this.CTSCheckbox);
-		fieldset.appendChild(DTRLabel);
-		fieldset.appendChild(this.DTRCheckbox);
-		fieldset.appendChild(XONLabel);
-		fieldset.appendChild(this.XONCheckbox);
-		this.appendChild(fieldset);
-
-		
-		this.CTSCheckbox.onchange =  this._onCTSChange();
-		this.DTRCheckbox.onchange =  this._onDTRChange();
-		this.XONCheckbox.onchange = this._onXONChange();
-		
+		this.appendChild(CTSCheckbox);
+		this.appendChild(DTRCheckbox);
+		this.appendChild(XONCheckbox);
 	}
 }
 
