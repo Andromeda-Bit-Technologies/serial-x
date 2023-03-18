@@ -208,12 +208,14 @@ port-table table td {
   align-items: center;
   padding: var(--medium);
   max-width: 320px;
-  height: 32px;
-  background: linear-gradient(to right, var(--bkg-0), var(--bkg-1));
+  height: 64px;
+  /* background: var(--bkg-2); */
+  background: linear-gradient(to right, var(--bkg-1), var(--bkg-2));
 }
 
 .port-option label {
-  width: 50%;
+  /* width: 50%; */
+  background: var(--bkg-1);
 }
 
 .port-option select {
@@ -243,6 +245,15 @@ port-table table td {
   color: var(--frg-0);
   border: none;
 }
+
+.port-option input[type="checkbox"] {
+  width: 65%;
+  font-size: var(--medium);
+  background: var(--bkg-1);
+  color: var(--frg-0);
+  border: none;
+}
+
 .port-option input:focus {
   background: var(--bkg-2);
 }
@@ -252,6 +263,26 @@ port-table table td {
 .port-option select.is-hidden {
   display: none;
 }
+
+on-off {
+  padding: var(--medium);
+}
+on-off[on=true] {
+  color: var(--green);
+}
+on-off[on=false] {
+  color: var(--red);
+}
+on-off[on=true] label {
+  text-align: center;
+}
+on-off[on=true] label {
+  color: var(--green);
+}
+on-off[on=false] label {
+  color: var(--red);
+}
+
 
 @media screen and (max-width: 1000px){
   h1 {

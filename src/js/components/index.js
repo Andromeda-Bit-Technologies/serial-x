@@ -5,5 +5,6 @@ import './toggle';
 import './theme-switch';
 import './port-scanner';
 import './port-table';
+import './on-off';
 import './port-options';
 import './port-view';

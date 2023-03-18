@@ -29,6 +29,16 @@ export const App = {
 		getVolume: function() {
 			return App.loadState('interface-volume') || DEFAULTS['audio-volume'];
 		},
+		play: (sound) => {
+			if (App.loadState('interface-audio-enabled') === 'true') {
+				if (App.audio.collection[sound].ended) {
+					App.audio.collection[sound].play();
+				} else {
+					App.audio.collection[sound].load();
+					App.audio.collection[sound].play();
+				}
+			}
+		},
 		init: function() {
 			App.audio.elements.map((element) => {
 				element.addEventListener('click', function () {

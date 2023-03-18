@@ -8,28 +8,32 @@ export class PortView extends HTMLElement {
 	}
 
 	connectedCallback() {
-		// this.setAttribute('port-view', true);
-		this.render();
-	}
-
-	static get observedAttributes() {
-		return ['port'];
-	}
-
-	attributeChangedCallback() {
-		let port = this.getAttribute('port');
-		Array.from(this.children).map((child) => child.setAttribute('port', port));
 		this.render();
 	}
 	
 	render() {
 		let portOptions = document.createElement('port-options');
 		portOptions.setAttribute('port', this.portInfo.name);
+
 		let baudSelect = document.createElement('baud-rate');
-		let dataBits = document.createElement('data-bits');
-		this.appendChild(baudSelect);
-		this.appendChild(dataBits);
+		let dataBitsSelect = document.createElement('data-bits');
+		let paritySelect = document.createElement('parity-type');
+		let stopBitsSelect = document.createElement('stop-bits');
+		let flowCTRL = document.createElement('flow-ctrl');
+		let softwareFlow = document.createElement('software-supported-flow-control');
+		let initialLineState = document.createElement('initial-line-state');
+
+		portOptions.appendChild(baudSelect);
+		portOptions.appendChild(dataBitsSelect);
+		portOptions.appendChild(paritySelect);
+		portOptions.appendChild(stopBitsSelect);
+		portOptions.appendChild(flowCTRL);
+		portOptions.appendChild(softwareFlow);
+		portOptions.appendChild(initialLineState);
+		
+		this.appendChild(portOptions);
 	}
 }
+
 
 window.customElements.define('port-view', PortView);
