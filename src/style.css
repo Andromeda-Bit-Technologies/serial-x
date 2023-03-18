@@ -176,18 +176,17 @@ port-table {
   padding: 0;
 }
 port-table table {
-  width: 80vw;
-  outline: 1px solid var(--bkg-1);
+  /* width: 80vw; */
+  background: var(--bkg-1);
 }
 port-table table th {
-  color: var(--frg-1);
-  background-color: var(--bkg-0-tr);
+  /* color: var(--frg-1); */
+  background-color: var(--bkg-2);
   text-decoration: none;
   font-size: var(--large);
   font-weight: normal;
   padding: var(--medium);
   text-align: center;
-  border-bottom: 1px solid var(--bkg-1);
 }
 port-table table tr {
   background: var(--bkg-0);
@@ -197,7 +196,7 @@ port-table table tr:nth-child(n+1) {
 }
 port-table table td {
   color: var(--frg-0);
-  padding: var(--small);
+  padding: var(--medium);
   text-align: center;
   font-size: var(--large);
 }

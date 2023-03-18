@@ -5,6 +5,7 @@ export class PortTable extends HTMLElement {
 	constructor() {
 		super();
 		this.id = 'port-table';
+		this.style.overflowX = 'auto';
 	}
 
 	connectedCallback() {
