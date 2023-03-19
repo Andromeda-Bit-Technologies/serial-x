@@ -209,12 +209,11 @@ port-table table td {
   max-width: 320px;
   height: 64px;
   /* background: var(--bkg-2); */
-  background: linear-gradient(to right, var(--bkg-1), var(--bkg-2));
+  background: linear-gradient(to right, var(--bkg-0), var(--bkg-2));
 }
 
 .port-option label {
-  /* width: 50%; */
-  background: var(--bkg-1);
+  background: transparent;
 }
 
 .port-option select {
