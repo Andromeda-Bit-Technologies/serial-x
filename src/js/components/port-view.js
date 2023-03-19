@@ -28,6 +28,9 @@ export class PortView extends HTMLElement {
 		let rxPortProperty = document.createElement('port-property');
 		rxPortProperty.setAttribute('text', 'RX');
 		rxPortProperty.setAttribute('color', 'red');
+		let portGateway = document.createElement('port-gateway');
+		portGateway.setAttribute('label', 'OPEN PORT');
+		portGateway.setAttribute('open', 'false');
 
 		portOptions.appendChild(baudSelect);
 		portOptions.appendChild(dataBitsSelect);
@@ -38,6 +41,7 @@ export class PortView extends HTMLElement {
 		portOptions.appendChild(initialLineState);
 		portOptions.appendChild(txPortProperty);
 		portOptions.appendChild(rxPortProperty);
+		portOptions.appendChild(portGateway);
 		
 		this.appendChild(portOptions);
 	}
