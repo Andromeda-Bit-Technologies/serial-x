@@ -32,15 +32,25 @@ export class OnOff extends HTMLElement {
 		}
 	}
 
+	addClickHandler() {
+		this.addEventListener('click', this.changeState(this));
+	}
+	
+	removeClickHandler() {
+		this.removeEventListener('click');
+	}
+
 	render() {
 		this.textContent = this.getAttribute('label');
 		this.checkbox = document.createElement('input');
 		this.checkbox.setAttribute('type', 'checkbox');
 		this.checkbox.style.display = 'none';
 		this.checkbox.style.width = '0px';
-
-		this.addEventListener('click', this.changeState(this));
-
+		if (this.getAttribute('disable-click') === 'true') {
+			this.removeClickHandler();
+		} else {
+			this.addClickHandler();
+		}
 		this.appendChild(this.checkbox);
 	}
 }

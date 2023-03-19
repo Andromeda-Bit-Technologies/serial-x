@@ -7,4 +7,5 @@ import './port-scanner';
 import './port-table';
 import './on-off';
 import './port-options';
+import './port-property';
 import './port-view';

@@ -282,6 +282,22 @@ on-off[on=false] label {
   color: var(--red);
 }
 
+port-property {
+  width: var(--small);
+  height: var(--small);
+  padding: var(--small);
+  border-radius: 50%;
+  font-size: var(--medium);
+}
+port-property[color="green"] {
+  color: var(--green);
+}
+port-property[color="yellow"] {
+  color: var(--yellow);
+}
+port-property[color="red"] {
+  color: var(--red);
+}
 
 @media screen and (max-width: 1000px){
   h1 {

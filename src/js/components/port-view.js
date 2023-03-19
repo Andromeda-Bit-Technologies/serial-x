@@ -22,6 +22,12 @@ export class PortView extends HTMLElement {
 		let flowCTRL = document.createElement('flow-ctrl');
 		let softwareFlow = document.createElement('software-supported-flow-control');
 		let initialLineState = document.createElement('initial-line-state');
+		let txPortProperty = document.createElement('port-property');
+		txPortProperty.setAttribute('text', 'TX');
+		txPortProperty.setAttribute('color', 'green');
+		let rxPortProperty = document.createElement('port-property');
+		rxPortProperty.setAttribute('text', 'RX');
+		rxPortProperty.setAttribute('color', 'red');
 
 		portOptions.appendChild(baudSelect);
 		portOptions.appendChild(dataBitsSelect);
@@ -30,6 +36,8 @@ export class PortView extends HTMLElement {
 		portOptions.appendChild(flowCTRL);
 		portOptions.appendChild(softwareFlow);
 		portOptions.appendChild(initialLineState);
+		portOptions.appendChild(txPortProperty);
+		portOptions.appendChild(rxPortProperty);
 		
 		this.appendChild(portOptions);
 	}
