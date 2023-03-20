@@ -34,7 +34,11 @@ export const App = {
 				if (App.audio.collection[sound].ended) {
 					App.audio.collection[sound].play();
 				} else {
-					App.audio.collection[sound].load();
+					try {
+						App.audio.collection[sound].load();
+					} catch (error) {
+						console.error(error);
+					}
 					App.audio.collection[sound].play();
 				}
 			}
@@ -46,13 +50,35 @@ export const App = {
 						if (App.audio.collection['interface-click'].ended) {
 							App.audio.collection['interface-click'].play();
 						} else {
-							App.audio.collection['interface-click'].load();
+							try {
+								App.audio.collection['interface-click'].load();
+							} catch (error) {
+								console.error(error);
+							}
 							App.audio.collection['interface-click'].play();
 						}
 					}
 				});
 			});
 		}
+	},
+	window: {
+		alwaysOnTop: (state) => {
+			appWindow.setAlwaysOnTop(state);
+			App.settings.window.alwaysOnTop.checked = state;
+			App.saveState('window-always-on-top', state);
+
+		},
+		fullscreen: (state) => {
+			appWindow.setFullscreen(state);
+			App.settings.window.fullscreen.checked = state;
+			App.saveState('window-fullscreen', state);
+
+		},
+		init: () => {
+			App.window.alwaysOnTop(App.loadState('window-always-on-top') === 'true');
+			App.window.fullscreen(App.loadState('window-fullscreen') === 'true');
+		},
 	},
 	settings: {
 		audio: {
@@ -64,21 +90,17 @@ export const App = {
 			fullscreen: document.getElementById('window-fullscreen'),
 		},
 		init: function () {
-			// set the checkbox to saved value
+			// setting audio volume
 			if (App.loadState('interface-audio-enabled') === 'false') {
 				App.settings.audio.enable.checked = false;
 			}
-			// set the interface volume slider to saved value
 			App.settings.audio.volume.value = Number(App.loadState('audio-volume')) || 0.5;
 			App.audio.setVolume(App.settings.audio.volume.value);
-
-			// setting audio volume
 			App.settings.audio.enable.addEventListener('change', function (event) {
 				let interfaceVolume = App.loadState('audio-volume') || 0.5;
 				event.target.checked ? App.audio.setVolume(interfaceVolume) : App.audio.setVolume(0);
 				App.saveState('interface-audio-enabled', event.target.checked ? true : false);
 			});
-			// setting audio volume
 			App.settings.audio.volume.addEventListener('change', function (event) {
 				App.audio.setVolume(Number(event.target.value));
 				App.settings.audio.volume.value = event.target.value;
@@ -87,16 +109,16 @@ export const App = {
 			// window settings
 			App.settings.window.alwaysOnTop.addEventListener('change', function (event) {
 				if (event.target.checked) {
-					appWindow.setAlwaysOnTop(true);
+					App.window.alwaysOnTop(true);
 				} else {
-					appWindow.setAlwaysOnTop(false);
+					App.window.alwaysOnTop(false);
 				}
 			});
 			App.settings.window.fullscreen.addEventListener('change', function (event) {
 				if (event.target.checked) {
-					appWindow.setFullscreen(true);
+					App.window.fullscreen(true);
 				} else {
-					appWindow.setFullscreen(false);
+					App.window.fullscreen(false);
 				}
 			});
 
@@ -165,6 +187,7 @@ export const App = {
 	},
 	log: (level, message) => undefined,
 	init: function () {
+		App.window.init();
 		App.audio.init();
 		App.settings.init();
 		App.portView.init();

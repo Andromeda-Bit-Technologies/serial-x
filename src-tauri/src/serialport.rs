@@ -82,6 +82,7 @@ pub fn scan_ports() -> std::string::String {
 				Ok(result) => result,
 				Err(error) => {
 					log::error!("{:?}", error);
+
 					String::from("SERDE_JSON ERROR")
 				},
 			}
@@ -93,3 +94,11 @@ pub fn scan_ports() -> std::string::String {
 		},
 	}
 }
+
+
+
+// pub type PortMap = std::collections::HashMap<String, dyn serialport::SerialPort>;
+
+// pub fn open(path: String, baud_rate: u32) -> Result<serialport::SerialPort, Error> {
+// 	serialport::new(path, baud_rate).open()
+// }

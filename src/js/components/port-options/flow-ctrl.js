@@ -21,9 +21,6 @@ export class FlowCTRL extends PortOption {
 			let targetName = event.target.getAttribute('label');
 			let state = event.target.getAttribute('on');
 
-			console.log(targetName);
-			console.log(state);
-
 			if (targetName === 'XON') {
 				if (state === 'true') {
 					xon.on();

@@ -20,8 +20,8 @@
 
         <roll-page name="settings">
 
-          <x-toggle target="settings" class="settings-toggle audio-interface-click" closed="false">
-            <p>Settings</p>
+          <x-toggle target="settings" class="settings-toggle" closed="false">
+            Settings
           </x-toggle>
 
           <x-overlay id="settings" closed="true">
@@ -82,7 +82,7 @@
                   <label for="port-scanner-interval-slider">
                   Interval <span id="port-scanner-interval-label"></span>
                   </label>
-                  <input type="range" min="500" max="10000" step="500"
+                  <input type="range" min="100" max="10000" step="100"
                     name="port-scanner-interval-slider"
                     id="port-scanner-interval-slider"
                     class="audio-interface-click">
@@ -97,10 +97,10 @@
 
         </roll-page>
 
-        <roll-page name="port-table">
+        <roll-page name="port-list">
           <div class="container">
             <port-scanner scan-interval="5500" id="port-scanner"></port-scanner>
-            <port-table></port-table>
+            <port-cards></port-cards>
           </div>
         </roll-page>
 

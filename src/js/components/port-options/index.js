@@ -6,5 +6,5 @@ import './stop-bits';
 import './flow-ctrl';
 import './software-flow-control';
 import './initial-line-state';
-import './port-gateway';
+import './port-property';
 import './port-options';

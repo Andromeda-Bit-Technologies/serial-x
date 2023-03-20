@@ -26,7 +26,7 @@ export class PortProperty extends HTMLElement {
 
 	render() {
 		this.textContent = this.getAttribute('text');
-		this.addEventListener('click', this.test)
+		this.addEventListener('click', this.test);
 	}
 }
 

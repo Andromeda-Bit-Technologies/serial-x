@@ -1,4 +1,4 @@
-import { App } from '../app/index';
+import { App } from '../../app';
 
 
 export class PortTable extends HTMLElement {

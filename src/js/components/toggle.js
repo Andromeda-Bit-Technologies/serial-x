@@ -1,8 +1,16 @@
+import { App } from '../app';
+
+
 class XToggle extends HTMLElement {
 	constructor() {
 		super();
+		
+	}
+
+	connectedCallback() {
 		this.style.display = 'block';
-		this.onclick = function() {
+		this.onclick = function () {
+			App.audio.play('interface-click');
 			this.toggle();
 		}
 	}
