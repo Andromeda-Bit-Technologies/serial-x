@@ -12,7 +12,7 @@ fn main() {
     log4rs::init_file("config/log4rs.yaml", Default::default()).unwrap();
     log::info!("Starting application");
     tauri::Builder::default()
-        .manage(serialx::PortMap(Default::default())),
+        .manage(serialx::PortMap(Default::default()),
         .invoke_handler(tauri::generate_handler![
             serialx::scan_ports,
             serialx::open_port,

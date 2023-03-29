@@ -98,19 +98,17 @@ pub fn scan_ports() -> std::string::String {
 	}
 }
 
-
+#[derive(Default)]
 pub struct PortMap(Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>);
 
 #[tauri::command]
-pub fn open_port(name: String, baud_rate: u32, port_map: State<HashMap<String, Box<dyn serialport::SerialPort>>>) {
-	match serialport::new(&name, baud_rate).open() {
-		Ok(port) => port_map.lock().unwrap().insert(name, port),
-		Err(error) => log::error!("{}", error),
-	}
+pub fn open_port(name: String, baud_rate: u32, port_map: State<PortMap>) {
+    match serialport::new(&name, baud_rate).open() {
+        Ok(port) => {
+            port_map.0.lock().unwrap().insert(name, port);
+        }
+        Err(error) => {
+            log::error!("{}", error);
+        }
+    };
 }
-
-// #[tauri::command]
-// #[tauri::command]
-// pub fn close_port(name: String, baud_rate: u32) {
-// 	serialport::new(&name, baud_rate).close();
-// }
