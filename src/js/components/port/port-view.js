@@ -10,8 +10,11 @@ export class PortView extends HTMLElement {
 	connectedCallback() {
 		this.render();
 	}
-	
+
 	render() {
+		let portMenu = document.createElement('port-menu');
+		portMenu.setAttribute('port', this.portInfo.name);
+
 		let sidePanel = document.createElement('side-panel');
 		sidePanel.setAttribute('port', this.portInfo.name);
 		let sidePanelToggle = document.createElement('x-toggle');
@@ -19,7 +22,7 @@ export class PortView extends HTMLElement {
 		sidePanelToggle.setAttribute('target', sidePanel.id());
 		sidePanelToggle.setAttribute('closed', 'false');
 		sidePanelToggle.textContent = 'Options';
-		this.appendChild(sidePanelToggle);
+		portMenu.appendChild(sidePanelToggle);
 
 		let portOptions = document.createElement('port-options');
 		portOptions.setAttribute('port', this.portInfo.name);
@@ -32,16 +35,10 @@ export class PortView extends HTMLElement {
 		let softwareFlow = document.createElement('software-supported-flow-control');
 		let initialLineState = document.createElement('initial-line-state');
 
-		let statusBar = document.createElement('status-bar');
-		statusBar.setAttribute('port', this.portInfo.name);
+		let portDataView = document.createElement('port-data-view');
 
-		let txPortProperty = document.createElement('port-property');
-		txPortProperty.setAttribute('text', 'TX');
-		txPortProperty.setAttribute('color', 'green');
-		let rxPortProperty = document.createElement('port-property');
-		rxPortProperty.setAttribute('text', 'RX');
-		rxPortProperty.setAttribute('color', 'red');
 		let portGateway = document.createElement('port-gateway');
+		portGateway.setAttribute('port', this.portInfo.name);
 		portGateway.setAttribute('label', '');
 		portGateway.setAttribute('open', 'false');
 
@@ -53,14 +50,12 @@ export class PortView extends HTMLElement {
 		portOptions.appendChild(softwareFlow);
 		portOptions.appendChild(initialLineState);
 
-		
-		statusBar.appendChild(txPortProperty);
-		statusBar.appendChild(rxPortProperty);
-		statusBar.appendChild(portGateway);
+		portMenu.appendChild(portGateway);
 
 		sidePanel.appendChild(portOptions);
-		
-		this.appendChild(statusBar);
+
+		this.appendChild(portMenu);
+		this.appendChild(portDataView);
 		this.appendChild(sidePanel);
 	}
 }

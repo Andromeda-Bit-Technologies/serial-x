@@ -19,6 +19,7 @@ log4rs = { version="1.2.0", features = ["gzip"] }
 tauri = { version = "1.2.4", features = ["fs-all", "shell-open", "window-close", "window-hide", "window-maximize", "window-minimize", "window-print", "window-request-user-attention", "window-set-always-on-top", "window-set-fullscreen", "window-set-position", "window-set-resizable", "window-set-size", "window-show", "window-unmaximize", "window-unminimize"] }
 log = "0.4.17"
 serialport = "4.2.0"
+serial2 = "0.1.7"
 
 [features]
 # by default Tauri runs in production mode

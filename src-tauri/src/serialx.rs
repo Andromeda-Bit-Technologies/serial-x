@@ -1,6 +1,9 @@
+use std::collections::HashMap;
+use std::sync::Mutex;
 use serde::{Deserialize, Serialize};
 use serialport;
 use serde_json;
+use tauri::State;
 
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -96,9 +99,18 @@ pub fn scan_ports() -> std::string::String {
 }
 
 
+pub struct PortMap(Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>);
 
-// pub type PortMap = std::collections::HashMap<String, dyn serialport::SerialPort>;
+#[tauri::command]
+pub fn open_port(name: String, baud_rate: u32, port_map: State<HashMap<String, Box<dyn serialport::SerialPort>>>) {
+	match serialport::new(&name, baud_rate).open() {
+		Ok(port) => port_map.lock().unwrap().insert(name, port),
+		Err(error) => log::error!("{}", error),
+	}
+}
 
-// pub fn open(path: String, baud_rate: u32) -> Result<serialport::SerialPort, Error> {
-// 	serialport::new(path, baud_rate).open()
+// #[tauri::command]
+// #[tauri::command]
+// pub fn close_port(name: String, baud_rate: u32) {
+// 	serialport::new(&name, baud_rate).close();
 // }

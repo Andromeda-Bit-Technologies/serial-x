@@ -2402,9 +2402,21 @@ dependencies = [
  "log4rs",
  "serde",
  "serde_json",
+ "serial2",
  "serialport",
  "tauri",
  "tauri-build",
+]
+
+[[package]]
+name = "serial2"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1fa2370e12745a20d3dcd07438fc72f399c74f59537a35863a1a7a9ff2482040"
+dependencies = [
+ "cfg-if",
+ "libc",
+ "winapi",
 ]
 
 [[package]]

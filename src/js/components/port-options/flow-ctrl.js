@@ -10,7 +10,7 @@ export class FlowCTRL extends PortOption {
 	_createCheckbox(label, option, state) {
 		let checkbox = document.createElement('on-off');
 		checkbox.setAttribute('label', label);
-		checkbox.setAttribute('id', `${this.ownerPort}-${option}`);
+		checkbox.setAttribute('option', `${option}`);
 		checkbox.setAttribute('on', state);
 		checkbox.setAttribute('port', this.ownerPort);
 		return checkbox;
@@ -48,6 +48,14 @@ export class FlowCTRL extends PortOption {
 			}
 			
 		}
+	}
+
+	get value() {
+		return {
+			cts: document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="cts"]`).getAttribute('on'),
+			dtr: document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="dtr"]`).getAttribute('on'),
+			xon: document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="xon"]`).getAttribute('on'),
+		};
 	}
 
 	render() {

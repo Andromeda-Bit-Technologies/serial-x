@@ -1,14 +1,14 @@
 .dark-theme {
 	--bkg-0: #000000;
-	--bkg-0-tr: #00000055;
+	--bkg-0-tr: #00000099;
 	--bkg-1: #042137;
-	--bkg-1-tr: #04213755;
+	--bkg-1-tr: #04213799;
 	--bkg-2: #020e18;
-	--bkg-2-tr: #020e1855;
+	--bkg-2-tr: #020e199;
 	--frg-0: #e6f4ff;
-	--frg-0-tr: #e6f4ff22;
+	--frg-0-tr: #e6f4ff99;
 	--frg-1: #80c8ff;
-	--frg-1-tr: #80c8ff55;
+	--frg-1-tr: #80c8ff99;
 	--red: #ff1414;
 	--yellow: #ffff14;
 	--orange: #ff8a14;

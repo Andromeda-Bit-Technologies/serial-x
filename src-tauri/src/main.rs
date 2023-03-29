@@ -4,15 +4,20 @@
 )]
 
 
-mod serialport;
+mod serialx;
+mod util;
 
 
 fn main() {
     log4rs::init_file("config/log4rs.yaml", Default::default()).unwrap();
     log::info!("Starting application");
-
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![serialport::scan_ports])
+        .manage(serialx::PortMap(Default::default())),
+        .invoke_handler(tauri::generate_handler![
+            serialx::scan_ports,
+            serialx::open_port,
+            util::log
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -8,3 +8,4 @@ import './port';
 import './port-options';
 import './side-panel';
 import './status-bar';
+import './status-bar-item';

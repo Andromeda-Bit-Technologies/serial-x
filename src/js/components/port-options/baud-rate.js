@@ -59,6 +59,8 @@ export class BaudRate extends PortOption {
 			let option = document.createElement('option')
 			option.textContent = rate;
 			if (rate === 9600) {
+				// default
+				this.setAttribute('value', '9600');
 				option.setAttribute('selected', true);
 			}
 			select.appendChild(option);

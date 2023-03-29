@@ -1,6 +1,7 @@
 export class PortCards extends HTMLElement {
 	constructor() {
 		super();
+		this.id = 'port-list';
 	}
 
 	connectedCallback() {
@@ -22,6 +23,8 @@ export class PortCards extends HTMLElement {
 
 				this.appendChild(portCard);
 			}
+		} else {
+			document.getElementById('port-list').innerHTML = '<h1>No Devices Connected</h1>';
 		}
 	}
 }

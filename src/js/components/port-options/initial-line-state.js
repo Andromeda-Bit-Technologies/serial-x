@@ -7,6 +7,13 @@ export class InitialLineState extends PortOption {
 		super();
 	}
 
+	get value() {
+		return {
+			dtr: document.querySelector(`initial-line-state[port=${this.ownerPort}] on-off[option="dtr"]`).getAttribute('on'),
+			rts: document.querySelector(`initial-line-state[port=${this.ownerPort}] on-off[option="rts"]`).getAttribute('on'),
+		};
+	}
+
 	render() {
 		let label = document.createElement('label');
 		label.textContent = 'Initial Line States';
@@ -15,13 +22,13 @@ export class InitialLineState extends PortOption {
 		dtr.setAttribute('on', true);
 		dtr.setAttribute('label', 'DTR');
 		dtr.setAttribute('port', this.ownerPort);
-		dtr.setAttribute('id', `${this.ownerPort}-initial-line-state-dtr`);
+		dtr.setAttribute('option', 'dtr');
 		
 		let rts = document.createElement('on-off');
 		rts.setAttribute('on', true);
 		rts.setAttribute('label', 'RTS');
 		rts.setAttribute('port', this.ownerPort);
-		rts.setAttribute('id', `${this.ownerPort}-initial-line-state-rts`);
+		rts.setAttribute('option', 'rts');
 
 		this.appendChild(label);
 		this.appendChild(dtr);

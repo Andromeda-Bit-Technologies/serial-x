@@ -18,16 +18,16 @@ export class PortOption extends HTMLElement {
 	}
 	
 	connectedCallback() {
+		this.setAttribute('port', this.ownerPort);
 		this.setAttribute('class', 'port-option audio-interface-click');
 		for (let child of Array.from(this.children)) {
 			child.setAttribute('port', this.ownerPort);
 		}
-		this.preRender();
+		this.onclick = this.playInterfaceSound;
+		this.setup();
 		this.render();
 	}
 	
-	preRender() {
-		this.onclick = this.playInterfaceSound;
-	}
+	setup() {}
 	
 }

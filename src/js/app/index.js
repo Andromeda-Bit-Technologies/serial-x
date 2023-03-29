@@ -1,5 +1,5 @@
 import { appWindow } from '@tauri-apps/api/window';
-
+const { invoke } = window.__TAURI__.tauri;
 
 
 export const App = {
@@ -184,8 +184,29 @@ export const App = {
 		scannerIntervalSlider: document.getElementById('port-scanner-interval-slider'),
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
+		open: (name, baudRate) => {
+			invoke('open_port', {name, baudRate}).then(() => console.log('PoRT OpeN'));
+		},
+		getPortSettings: (port) => {
+			let portOptions = document.querySelector(`port-options[port=${port}]`);
+			return {
+				baudRate: document.querySelector(`port-options[port=${port}] baud-rate select`).value,
+				dataBits: document.querySelector(`port-options[port=${port}] data-bits select`).value,
+				parityType: document.querySelector(`port-options[port=${port}] parity-type select`).value,
+				stopBits: document.querySelector(`port-options[port=${port}] stop-bits select`).value,
+				flowCTRL: document.querySelector(`port-options[port=${port}] flow-ctrl`).value,
+				softwareFlowCTRL: document.querySelector(`port-options[port=${port}] software-supported-flow-control`).value,
+				initialLineState: document.querySelector(`port-options[port=${port}] initial-line-state`).value,
+			};
+		},
+		init: () => {
+			App.port.setScanInterval(App.loadState('port-scan-interval'));
+			App.port.scannerIntervalSlider.value = App.loadState('port-scan-interval');
+		}
 	},
-	log: (level, message) => undefined,
+	log: (level, message) => {
+		invoke('log', { level, message }).then(() => console.log('SAVED TO APP LOG'));
+	},
 	init: function () {
 		App.window.init();
 		App.audio.init();
