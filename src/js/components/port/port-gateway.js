@@ -34,8 +34,10 @@ export class PortGateway extends HTMLElement {
 		App.audio.play('interface-click');
 		if (this.getAttribute('on') === 'true') {
 			this.setAttribute('on', 'false');
+			this.dispatchEvent(new CustomEvent('change-state', {detail: {'on': false}}));
 		} else {
 			this.setAttribute('on', 'true');
+			this.dispatchEvent(new CustomEvent('change-state', { detail: { 'on': true } }));
 		}
 	}
 

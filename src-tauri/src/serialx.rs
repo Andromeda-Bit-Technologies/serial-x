@@ -25,6 +25,34 @@ pub struct PortInfo {
 	pub product: Option<String>,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub enum SoftwareFlowControl {
+	ON,
+	OFF,
+}
+
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub enum InitialLineState {
+	DTR_ON,
+	DTR_OFF,
+	RTS_ON,
+	RTS_OFF,
+}
+
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+pub struct PortOptions {
+	pub baud_rate: u32,
+	pub data_bits: serialport::DataBits,
+	pub parity: serialport::Parity,
+	pub stop_bits: serialport::StopBits,
+	pub flow_control: serialport::FlowControl,
+	pub software_flow_control: SoftwareFlowControl,
+	pub initial_line_state: InitialLineState,
+}
+
+
 #[tauri::command]
 pub fn scan_ports() -> std::string::String {
 	let ports = serialport::available_ports();
@@ -101,14 +129,25 @@ pub fn scan_ports() -> std::string::String {
 #[derive(Default)]
 pub struct PortMap(Mutex<HashMap<String, Box<dyn serialport::SerialPort>>>);
 
+
+
 #[tauri::command]
-pub fn open_port(name: String, baud_rate: u32, port_map: State<PortMap>) {
-    match serialport::new(&name, baud_rate).open() {
+pub fn open_port(name: String, port_options: PortOptions, port_map: State<PortMap>) {
+    match serialport::new(&name, port_options.baud_rate).open() {
         Ok(port) => {
+			port.set_data_bits(port_options.data_bits);
+			port.set_flow_control(port_options.flow_control);
+			port.set_parity(port_options.parity);
+			port.set_stop_bits(port_options.stop_bits);
             port_map.0.lock().unwrap().insert(name, port);
         }
         Err(error) => {
-            log::error!("{}", error);
+            log::error!("{} - {}", name, error);
         }
     };
+}
+
+#[tauri::command]
+pub fn close_port(name: String, port_map: State<PortMap>) {
+   unimplemented!();
 }

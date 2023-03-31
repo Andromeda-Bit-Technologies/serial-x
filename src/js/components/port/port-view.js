@@ -1,3 +1,7 @@
+import { App } from '../../app';
+
+
+
 export class PortView extends HTMLElement {
 	constructor() {
 		super();
@@ -41,6 +45,13 @@ export class PortView extends HTMLElement {
 		portGateway.setAttribute('port', this.portInfo.name);
 		portGateway.setAttribute('label', '');
 		portGateway.setAttribute('open', 'false');
+		portGateway.addEventListener('change-state', (event) => {
+			if (event.detail.on === false) {
+				App.port.open(this.getAttribute('port'));
+			} else {
+				App.port.close(this.getAttribute('port'));
+			}
+		});
 
 		portOptions.appendChild(baudSelect);
 		portOptions.appendChild(dataBitsSelect);

@@ -2455,6 +2455,7 @@ dependencies = [
  "mach 0.3.2",
  "nix",
  "regex",
+ "serde",
  "winapi",
 ]
 

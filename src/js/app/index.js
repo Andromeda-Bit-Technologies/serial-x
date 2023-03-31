@@ -184,15 +184,19 @@ export const App = {
 		scannerIntervalSlider: document.getElementById('port-scanner-interval-slider'),
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
-		open: (name, baudRate) => {
-			invoke('open_port', {name, baudRate}).then(() => console.log('PoRT OpeN'));
+		open: (name) => {
+			let portSettings = App.port.getPortSettings(name);
+			invoke('open_port', {name, portSettings}).then(() => console.log('PoRT OpeN'));
+		},
+		close: (name) => {
+			console.log(`CLOSING PORT: ${name}`);
 		},
 		getPortSettings: (port) => {
 			let portOptions = document.querySelector(`port-options[port=${port}]`);
 			return {
 				baudRate: document.querySelector(`port-options[port=${port}] baud-rate select`).value,
 				dataBits: document.querySelector(`port-options[port=${port}] data-bits select`).value,
-				parityType: document.querySelector(`port-options[port=${port}] parity-type select`).value,
+				parity: document.querySelector(`port-options[port=${port}] parity-type select`).value,
 				stopBits: document.querySelector(`port-options[port=${port}] stop-bits select`).value,
 				flowCTRL: document.querySelector(`port-options[port=${port}] flow-ctrl`).value,
 				softwareFlowCTRL: document.querySelector(`port-options[port=${port}] software-supported-flow-control`).value,
