@@ -191,7 +191,7 @@ pub fn open_port(name: String, port_options: PortOptions, port_map: State<PortMa
 
 #[tauri::command]
 pub fn close_port(name: String, port_map: State<PortMap>) {
-   match port_map.0.lock().gitunwrap().remove(&name) {
+   match port_map.0.lock().unwrap().remove(&name) {
 	   Some(_) => log::trace!("Port {} closed", &name),
 	   None => log::trace!("Port {} was already closed", &name),
    }
