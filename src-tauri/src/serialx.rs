@@ -214,7 +214,7 @@ pub fn read_port(window: tauri::Window, port_name: String, buffer_size: usize, p
 		Some(port) => {
 			let mut buffer: Vec<u8> = [u8; buffer_size];
 			log::trace!("Reading from port {}", &port_name);
-			match port.read(buffer) { 
+			match port.read(buffer) {
 				Ok(_size) => {
 					window.emit("receive-data", DataPacket { port_name: port_name.clone(), data: buffer.to_vec() });
 					Ok(())
