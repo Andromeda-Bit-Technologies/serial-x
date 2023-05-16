@@ -51,11 +51,14 @@ export class FlowCTRL extends PortOption {
 	}
 
 	get value() {
-		return {
-			cts: document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="cts"]`).getAttribute('on'),
-			dtr: document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="dtr"]`).getAttribute('on'),
-			xon: document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="xon"]`).getAttribute('on'),
-		};
+			if (document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="cts"]`).getAttribute('on') === 'true' ||
+				document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="dtr"]`).getAttribute('on') === 'true') {
+				return "Hardware";
+			}
+			if (document.querySelector(`flow-ctrl[port=${this.ownerPort}] on-off[option="xon"]`).getAttribute('on') === 'true') {
+				return "Software";
+			}
+			return "None";
 	}
 
 	render() {

@@ -46,7 +46,7 @@ export class PortView extends HTMLElement {
 		portGateway.setAttribute('label', '');
 		portGateway.setAttribute('open', 'false');
 		portGateway.addEventListener('change-state', (event) => {
-			if (event.detail.on === false) {
+			if (event.detail.on === true) {
 				App.port.open(this.getAttribute('port'));
 			} else {
 				App.port.close(this.getAttribute('port'));

@@ -16,6 +16,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             serialx::scan_ports,
             serialx::open_port,
+            serialx::close_port,
             util::log
         ])
         .run(tauri::generate_context!())

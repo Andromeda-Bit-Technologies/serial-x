@@ -1,5 +1,6 @@
 import { appWindow } from '@tauri-apps/api/window';
 const { invoke } = window.__TAURI__.tauri;
+import { convertDataBits } from './util';
 
 
 export const App = {
@@ -185,22 +186,23 @@ export const App = {
 		getScanInterval: () => App.port.scanner.getAttribute('scan-interval'),
 		setScanInterval: (interval) => App.port.scanner.setAttribute('scan-interval', interval),
 		open: (name) => {
-			let portSettings = App.port.getPortSettings(name);
-			invoke('open_port', {name, portSettings}).then(() => console.log('PoRT OpeN'));
+			let portOptions = App.port.getPortSettings(name);
+			console.log(portOptions);
+			invoke('open_port', { name, portOptions }).then(() => console.log('•••PORT OPEN•••'));
 		},
 		close: (name) => {
-			console.log(`CLOSING PORT: ${name}`);
+			console.log(`•••CLOSING PORT•••: ${name}`);
+			invoke('close_port', { name }).then(() => console.log('PORT CLOSED'));
 		},
 		getPortSettings: (port) => {
-			let portOptions = document.querySelector(`port-options[port=${port}]`);
 			return {
-				baudRate: document.querySelector(`port-options[port=${port}] baud-rate select`).value,
-				dataBits: document.querySelector(`port-options[port=${port}] data-bits select`).value,
+				baud_rate: Number(document.querySelector(`port-options[port=${port}] baud-rate select`).value),
+				data_bits: convertDataBits(document.querySelector(`port-options[port=${port}] data-bits select`).value),
 				parity: document.querySelector(`port-options[port=${port}] parity-type select`).value,
-				stopBits: document.querySelector(`port-options[port=${port}] stop-bits select`).value,
-				flowCTRL: document.querySelector(`port-options[port=${port}] flow-ctrl`).value,
-				softwareFlowCTRL: document.querySelector(`port-options[port=${port}] software-supported-flow-control`).value,
-				initialLineState: document.querySelector(`port-options[port=${port}] initial-line-state`).value,
+				stop_bits: document.querySelector(`port-options[port=${port}] stop-bits select`).value,
+				flow_control: document.querySelector(`port-options[port=${port}] flow-ctrl`).value,
+				software_flow_control: document.querySelector(`port-options[port=${port}] software-supported-flow-control`).value,
+				initial_line_state: document.querySelector(`port-options[port=${port}] initial-line-state`).value,
 			};
 		},
 		init: () => {
@@ -209,7 +211,7 @@ export const App = {
 		}
 	},
 	log: (level, message) => {
-		invoke('log', { level, message }).then(() => console.log('SAVED TO APP LOG'));
+		invoke('log', { level, message }).then(() => null);
 	},
 	init: function () {
 		App.window.init();

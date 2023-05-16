@@ -7,7 +7,7 @@ export class StopBits extends PortOption {
 	}
 
 	get stopBitsOptions() {
-		return [1, 1.5, 2];
+		return ['One', 'Two'];
 	}
 
 	render() {

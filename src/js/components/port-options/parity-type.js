@@ -8,7 +8,7 @@ export class ParityType extends PortOption {
 	}
 
 	get parityOptions() {
-		return ['odd', 'even', 'none'];
+		return ['Odd', 'Even', 'None'];
 	}
 
 	render() {

@@ -3,6 +3,7 @@
 
 * {
   font-family: "RobotoCondensed-Regular";
+  font-smooth: subpixel-antialiased;
   box-sizing: border-box;
   color: var(--frg-0);
   stroke: var(--frg-0);
@@ -88,6 +89,8 @@ roll-container {
 
 roll-page {
   background: var(--bkg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 roll-page h1 {
@@ -119,15 +122,19 @@ x-toggle[target="settings"] {
 
 #settings {
   position: absolute;
-  width: 60vw;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 55vw;
   top: 5vw;
-  left: 20vw;
+  left: 22.5vw;
   z-index: 1;
   display: flex;
   justify-content: center;
   background-color: var(--bkg-0);
   overflow: hidden;
-  box-shadow: 0 0 var(--xx-small) var(--frg-1-tr);
+  padding: var(--medium);
+  box-shadow: 0 0 var(--xx-small) var(--frg-1-tr) inset;
 }
 #settings[closed=true] {
   opacity: 0;
@@ -143,13 +150,15 @@ x-toggle[target="settings"] {
 #settings settings-panel setting-category {
   display: flex;
   flex-direction: column;
-  padding: var(--large);
+  padding: var(--medium) var(--small);
+  /* outline: 1px solid var(--frg-0); */
 }
 #settings settings-panel setting-category h3 {
-  color: var(--frg-1);
+  color: var(--frg-0);
+  /* text-transform: uppercase; */
 }
 #settings settings-panel setting-category hr {
-  background: var(--frg-1-tr);
+  background: linear-gradient(to right, var(--frg-0-tr), transparent);
   border: none;
   height: 1px;
 }
@@ -160,7 +169,7 @@ x-toggle[target="settings"] {
   align-items: center;
   min-width: 25vw;
   min-height: 3vh;
-  padding: var(--medium);
+  padding: var(--small);
   color: var(--red);
 }
 #port-scanner-interval-label {
@@ -320,14 +329,15 @@ status-bar-item {
   justify-content: center;
   align-items: center;
   margin: 0 var(--small);
-  background: var(--bkg-0);
-  padding: var(--small);
+  background: linear-gradient(to bottom right, transparent, 10%, var(--bkg-0));
+  height: 100%;
 }
 
 .status-bar-item-identifier {
   display: block;
   padding: 0 var(--medium);
   color: var(--frg-0);
+  font-weight: normal;
 }
 
 @media screen and (max-width: 1000px){

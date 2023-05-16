@@ -8,7 +8,6 @@ export class OnOff extends HTMLElement {
 		this.style.textAlign = 'center';
 		this.style.minWidth = '64px';
 		this.style.minHeight = '32px';
-		this.style.transition = 'color 0.15s ease-out';
 		this.render();
 	}
 

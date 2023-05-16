@@ -21,7 +21,7 @@ export class PortCards extends HTMLElement {
 				portCard.setAttribute('manufacturer', port.manufacturer);
 				portCard.setAttribute('product', port.product);
 
-				this.appendChild(portCard);
+				document.getElementById('port-list').appendChild(portCard);
 			}
 		} else {
 			document.getElementById('port-list').innerHTML = '<h1>No Devices Connected</h1>';

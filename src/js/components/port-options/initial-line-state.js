@@ -9,8 +9,8 @@ export class InitialLineState extends PortOption {
 
 	get value() {
 		return {
-			dtr: document.querySelector(`initial-line-state[port=${this.ownerPort}] on-off[option="dtr"]`).getAttribute('on'),
-			rts: document.querySelector(`initial-line-state[port=${this.ownerPort}] on-off[option="rts"]`).getAttribute('on'),
+			dtr: document.querySelector(`initial-line-state[port=${this.ownerPort}] on-off[option="dtr"]`).getAttribute('on') === 'true' ? "On" : "Off",
+			rts: document.querySelector(`initial-line-state[port=${this.ownerPort}] on-off[option="rts"]`).getAttribute('on') === 'true' ? "On" : "Off",
 		};
 	}
 
